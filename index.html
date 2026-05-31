@@ -359,26 +359,26 @@ h2.sec-title em{
 }
 
 /* Inventory chart */
-.inv{width:100%;height:auto;display:block}
-.inv .axis{stroke:var(--rule);stroke-width:1.4}
+.inv{width:100%;height:auto;display:block;overflow:visible}
+.inv .axis{stroke:var(--ink-soft);stroke-width:1.4;opacity:.45}
 .inv .viral{
-  fill:none;stroke:var(--ink-soft);stroke-width:3;
+  fill:none;stroke:var(--ink-soft);stroke-width:2.6;
   stroke-dasharray:10 10;stroke-linecap:round;
   opacity:.55;
 }
 .inv .compound{
-  fill:none;stroke:var(--honey);stroke-width:4;
+  fill:none;stroke:var(--honey);stroke-width:4.2;
   stroke-linecap:round;
 }
-.inv text{font-family:"Cormorant SC",serif}
+.inv text{font-family:"Cormorant SC",serif;font-weight:500}
 .inv .label{
-  font-size:30px;letter-spacing:.34em;
+  font-size:32px;letter-spacing:.3em;
 }
-.inv .label.viral{fill:var(--ink-soft)}
+.inv .label.viral{fill:var(--ink-soft);opacity:.7}
 .inv .label.compound{fill:var(--honey-deep)}
 .inv .axis-label{
-  font-size:22px;letter-spacing:.36em;
-  fill:var(--ink-soft);
+  font-size:20px;letter-spacing:.36em;
+  fill:var(--ink-soft);opacity:.7;
 }
 
 /* ─────────── CASE STUDIES ─────────── */
@@ -832,22 +832,22 @@ footer .colophon{
         <div class="fw-diagram">
           <svg class="inv" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
             <!-- axes -->
-            <line class="axis" x1="130" y1="70" x2="130" y2="525"/>
-            <line class="axis" x1="130" y1="525" x2="970" y2="525"/>
+            <line class="axis" x1="135" y1="80" x2="135" y2="540"/>
+            <line class="axis" x1="135" y1="540" x2="965" y2="540"/>
 
-            <!-- viral bell curve (dashed grey) -->
-            <path class="viral" d="M 132 522 C 280 522, 320 130, 410 130 C 500 130, 560 522, 850 522 L 968 524"/>
+            <!-- viral bell curve (dashed grey) — peak ≈ (410, 175) -->
+            <path class="viral" d="M 140 537 C 300 537, 335 178, 410 178 C 485 178, 540 537, 820 537 L 960 539"/>
 
-            <!-- compound (solid honey, exponential) -->
-            <path class="compound" d="M 132 524 C 480 522, 680 410, 800 280 S 940 130, 968 100"/>
+            <!-- compound (solid honey, exponential rise to top-right) -->
+            <path class="compound" d="M 140 540 C 480 538, 680 420, 800 300 S 935 160, 960 130"/>
 
             <!-- axis labels -->
-            <text class="axis-label" x="72" y="300" text-anchor="middle" transform="rotate(-90 72 300)">PROFIT</text>
-            <text class="axis-label" x="540" y="590" text-anchor="middle">TIME →</text>
+            <text class="axis-label" x="78" y="310" text-anchor="middle" transform="rotate(-90 78 310)">PROFIT</text>
+            <text class="axis-label" x="550" y="595" text-anchor="middle">TIME →</text>
 
             <!-- curve labels -->
-            <text class="label viral" x="430" y="98" text-anchor="middle">VIRAL</text>
-            <text class="label compound" x="905" y="74" text-anchor="middle">COMPOUND</text>
+            <text class="label viral" x="450" y="142" text-anchor="middle">VIRAL</text>
+            <text class="label compound" x="960" y="105" text-anchor="end">COMPOUND</text>
           </svg>
         </div>
       </article>
