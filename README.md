@@ -6,6 +6,17 @@ A spec-driven, agent-reviewed workflow so every iteration ships a website that d
 
 ---
 
+## The architecture-first principle
+
+> Every customer feedback compounds a contract. It never lands as a one-off pixel edit.
+
+Concretely:
+- "The COMPOUND label is clipped" is **not** "move the anchor." It is *"no SVG label may use `text-anchor=middle` within 100 viewBox units of an edge"* — a permanent rule added to `SPEC.md §4 C-1` and `AVOID.md`.
+- A feedback that only changes pixels is a **failed translation**. The Translator agent must always identify which contract grows.
+- The site gets sharper and the system gets more robust *together*. Iteration #50 is safer than iteration #5 because the spec has absorbed every prior lesson.
+
+---
+
 ## The contract
 
 | File | Role |
@@ -13,9 +24,12 @@ A spec-driven, agent-reviewed workflow so every iteration ships a website that d
 | `index.html` | The built site (single-file). |
 | `SPEC.md` | Source of truth. Design tokens, section contracts, component invariants. |
 | `AVOID.md` | Growing ledger of every rejection. Voice, color, layout, anti-patterns. |
+| `screenshot.js` | Playwright script — takes full-page + section screenshots at desktop/tablet/mobile into `.review/latest/`. |
+| `reference/` | Reference images and `.md` specs for sections that have a visual target. |
 | `agents/translator.md` | Prompt: customer feedback → requirement + spec diff. |
 | `agents/implementer.md` | Prompt: requirement → minimal code change. |
-| `agents/reviewer.md` | Prompt: change → PASS/FAIL with whole-file scan. |
+| `agents/reviewer.md` | Prompt: code change → PASS/FAIL with whole-file scan. |
+| `agents/visual_reviewer.md` | Prompt: screenshots → PASS/FAIL against spec + reference images. |
 
 ---
 
@@ -48,6 +62,17 @@ A spec-driven, agent-reviewed workflow so every iteration ships a website that d
        ┌────────────────┐
        │    Reviewer    │  reads SPEC + AVOID + full index.html + diff
        │   (subagent)   │  → PASS / FAIL with evidence + scope notes
+       └────────┬───────┘
+                │
+              PASS
+                │
+                ▼
+       Main thread: `npm run review`  (generates screenshots in .review/latest/)
+                │
+                ▼
+       ┌────────────────┐
+       │ Visual Reviewer│  reads PNGs + SPEC + AVOID + reference/
+       │   (subagent)   │  → PASS / FAIL with pixel evidence
        └────────┬───────┘
                 │
         ┌───────┴────────┐
@@ -85,12 +110,21 @@ The main thread:
 
 ---
 
-## What this system does NOT do (yet)
+## Visual review
 
-- No headless-browser screenshot. Visual ground truth still requires Mehr sending screenshots when something looks wrong.
-- No automated diff render between iterations. The Reviewer reads code; doesn't see pixels.
+Default mode: **Mehr eyeballs the live URL and sends screenshots when something looks wrong.**
+I read the screenshot via vision and run the Visual Reviewer subagent against it + the spec + any `reference/*.md` description.
 
-Both are wireable later (Playwright + a vision-capable reviewer).
+Optional local mode (Playwright, already installed):
+```bash
+npm run review              # screenshots local index.html → .review/latest/
+npm run review:live         # screenshots the deployed Pages URL
+npm run review:inventory    # only the inventory diagram (faster spot-check)
+```
+
+Either way, the Visual Reviewer reads PNGs via vision, side-by-sides against `reference/`, and issues PASS/FAIL.
+
+**To add a reference for a section:** drop a PNG at `reference/{slug}.png` *and* write a paired `reference/{slug}.md` that describes the intended look (peak positions, colors, label placement). The `.md` is the durable spec; the PNG is for vision side-by-side.
 
 ---
 
@@ -102,8 +136,24 @@ mehr-portfolio/
 ├── SPEC.md                # contract
 ├── AVOID.md               # rejection ledger
 ├── README.md              # this file
+├── screenshot.js          # Playwright screenshot script
+├── package.json           # npm scripts: review, review:live, review:inventory
+├── .gitignore
+├── reference/             # visual ground truth (PNGs + paired .md specs)
+│   └── inventory.md
 └── agents/
     ├── translator.md
     ├── implementer.md
-    └── reviewer.md
+    ├── reviewer.md
+    └── visual_reviewer.md
 ```
+
+---
+
+## What this system still does NOT do
+
+- No automated pixel-diff against a baseline (would catch tiny drifts across iterations).
+- No CI integration (screenshots run locally, not on every push).
+- No accessibility audit.
+
+All wireable later as the project matures.

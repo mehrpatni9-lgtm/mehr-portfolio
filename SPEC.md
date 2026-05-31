@@ -3,6 +3,12 @@
 This document is the contract between Mehr (customer) and the build system.
 Every feedback updates this file first. Code is downstream.
 
+## §0 — Architecture-first principle
+
+Every customer feedback must compound a contract somewhere — either this spec, `AVOID.md`, a component contract in §4, or an agent prompt. A feedback that resolves only by editing pixels is a **failed translation**: the Translator should re-run and identify the durable rule that the feedback implies.
+
+Concrete test: if the same class of feedback could be given again next month against a different section, the rule isn't extracted yet.
+
 ---
 
 ## 1. Thesis & voice

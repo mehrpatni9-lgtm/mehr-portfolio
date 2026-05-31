@@ -1,0 +1,16 @@
+{
+  "name": "mehr-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mehr Patni — spec-driven editorial portfolio with agent-reviewed iteration loop.",
+  "main": "index.html",
+  "scripts": {
+    "review": "node screenshot.js",
+    "review:live": "node screenshot.js --live",
+    "review:inventory": "node screenshot.js --section=inventory"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
