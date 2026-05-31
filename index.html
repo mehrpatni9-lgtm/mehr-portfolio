@@ -339,44 +339,45 @@ h2.sec-title em{
 }
 
 /* Rule of Five SVG */
-.rof{width:100%;max-width:420px;height:auto}
+.rof{width:100%;max-width:460px;height:auto}
 .rof .spoke{stroke:var(--rule);stroke-width:1}
 .rof .node{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
 .rof .center{fill:var(--honey);stroke:var(--honey-deep);stroke-width:1.2}
 .rof .center-label{
   font-family:"Cormorant Garamond",serif;
   font-style:italic;
-  font-size:16px;
+  font-size:22px;
   fill:var(--paper);
   text-anchor:middle;
   dominant-baseline:middle;
 }
 .rof .node-label{
   font-family:"Cormorant SC",serif;
-  font-size:11px;letter-spacing:.18em;
+  font-size:15px;letter-spacing:.22em;
   fill:var(--ink-mid);
   text-anchor:middle;
 }
 
 /* Inventory chart */
-.inv{width:100%;max-width:480px;height:auto}
-.inv .axis{stroke:var(--rule);stroke-width:1}
+.inv{width:100%;height:auto;display:block}
+.inv .axis{stroke:var(--rule);stroke-width:1.4}
 .inv .viral{
-  fill:none;stroke:var(--ink-soft);stroke-width:1.6;
-  stroke-dasharray:5 5;
+  fill:none;stroke:var(--ink-soft);stroke-width:3;
+  stroke-dasharray:10 10;stroke-linecap:round;
+  opacity:.55;
 }
 .inv .compound{
-  fill:none;stroke:var(--honey);stroke-width:2.2;
+  fill:none;stroke:var(--honey);stroke-width:4;
+  stroke-linecap:round;
 }
+.inv text{font-family:"Cormorant SC",serif}
 .inv .label{
-  font-family:"Cormorant SC",serif;
-  font-size:11px;letter-spacing:.22em;
+  font-size:30px;letter-spacing:.34em;
 }
-.inv .label.viral{stroke:none;fill:var(--ink-soft)}
-.inv .label.compound{stroke:none;fill:var(--honey-deep)}
+.inv .label.viral{fill:var(--ink-soft)}
+.inv .label.compound{fill:var(--honey-deep)}
 .inv .axis-label{
-  font-family:"Cormorant SC",serif;
-  font-size:10px;letter-spacing:.2em;
+  font-size:22px;letter-spacing:.36em;
   fill:var(--ink-soft);
 }
 
@@ -829,19 +830,24 @@ footer .colophon{
           <p class="practice">The Brain Health Playbook took six weeks. Clinical leads still cite it two years later. Most ad creative doesn't survive a quarter.</p>
         </div>
         <div class="fw-diagram">
-          <svg class="inv" viewBox="0 0 480 240" aria-hidden="true">
+          <svg class="inv" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
             <!-- axes -->
-            <line class="axis" x1="40" y1="20" x2="40" y2="200"/>
-            <line class="axis" x1="40" y1="200" x2="460" y2="200"/>
-            <text class="axis-label" x="40" y="218">T0</text>
-            <text class="axis-label" x="450" y="218" text-anchor="end">T+24mo</text>
-            <text class="axis-label" x="22" y="26" text-anchor="end">VALUE</text>
-            <!-- viral spike (dashed) -->
-            <path class="viral" d="M40 185 L120 180 L180 60 L220 175 L460 188"/>
-            <text class="label viral" x="190" y="50" text-anchor="middle">VIRAL · PEAKS, DECAYS</text>
-            <!-- compound (solid honey) -->
-            <path class="compound" d="M40 195 C 140 185, 230 150, 320 100 S 430 50, 460 38"/>
-            <text class="label compound" x="455" y="30" text-anchor="end">COMPOUND · INVENTORY</text>
+            <line class="axis" x1="130" y1="70" x2="130" y2="525"/>
+            <line class="axis" x1="130" y1="525" x2="970" y2="525"/>
+
+            <!-- viral bell curve (dashed grey) -->
+            <path class="viral" d="M 132 522 C 280 522, 320 130, 410 130 C 500 130, 560 522, 850 522 L 968 524"/>
+
+            <!-- compound (solid honey, exponential) -->
+            <path class="compound" d="M 132 524 C 480 522, 680 410, 800 280 S 940 130, 968 100"/>
+
+            <!-- axis labels -->
+            <text class="axis-label" x="72" y="300" text-anchor="middle" transform="rotate(-90 72 300)">PROFIT</text>
+            <text class="axis-label" x="540" y="590" text-anchor="middle">TIME →</text>
+
+            <!-- curve labels -->
+            <text class="label viral" x="430" y="98" text-anchor="middle">VIRAL</text>
+            <text class="label compound" x="905" y="74" text-anchor="middle">COMPOUND</text>
           </svg>
         </div>
       </article>
