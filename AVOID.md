@@ -21,7 +21,7 @@ Read this **before** writing copy or code. Append, don't replace.
 
 ## Typography
 
-- **No sans-serif.** All-serif throughout — Italiana, Cormorant Garamond, Cormorant SC.
+- **No sans-serif.** All-serif throughout — Italiana for display, EB Garamond (roman + italic + small-caps via `font-variant`) for everything else.
 - **No bold for emphasis.** Italic carries emphasis. Bold is rationed (small caps + tracking does most of the heavy lifting).
 
 ## Iconography & decoration
@@ -53,6 +53,11 @@ When a new rejection lands:
 ---
 
 ## Recent additions (most recent first)
+
+### 2026-06-02 — Italic-by-default in CSS classes
+- **Rule:** No CSS class may declare `font-style: italic` as its default unless it is on the surviving-justifications list in `SPEC.md §2 Typography`. The default voice is roman. Italic is a tool reserved for `<em>` and a small set of documented signature accents.
+- **Why:** Mehr asked to move to EB Garamond and pull back italic to "specific spaces, mostly straight." Italic-by-default flattens the emphasis system and makes the whole site read at one register.
+- **Detection:** Reviewer greps every CSS rule in `styles.css` for `font-style:italic`. Any selector that isn't `em`, `.hero .surname`, `.sell .letter`, or `.rof .center-label` triggers FAIL.
 
 ### 2026-05-31 — SVG label clipping
 - **Rule:** No `text-anchor="middle"` within 100 viewBox units of a viewBox edge.

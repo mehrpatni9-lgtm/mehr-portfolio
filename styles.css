@@ -25,11 +25,13 @@ html{scroll-behavior:smooth}
 body{
   background:var(--paper);
   color:var(--ink);
-  font-family:"Cormorant Garamond","EB Garamond",Georgia,serif;
+  font-family:"EB Garamond",Georgia,serif;
+  font-weight:400;
   font-size:19px;
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
+  font-feature-settings:"liga","kern";
 }
 
 ::selection{background:var(--honey);color:var(--paper)}
@@ -40,6 +42,38 @@ a:hover{color:var(--honey-deep);border-color:var(--honey)}
 img{max-width:100%;display:block}
 
 .wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+
+/* ─────────── SMALL-CAPS UTILITY ───────────
+   Default small-caps usage across the site:
+   font-family EB Garamond + font-variant all-small-caps + letter-spacing.
+   Bundled as a base style applied via the .sc class OR repeated inline.
+*/
+.sc,
+nav.top ul a,
+nav.slim .back,
+.hero .meta-eyebrow,
+.hero .meta-line,
+.sec-eyebrow,
+.sec-num,
+.fw-meta .num,
+.fw-meta .practice::before,
+.sell .word,
+.case .lede .meta,
+.case .prose .principle::before,
+.metrics .head,
+.work-tile .tile-top,
+.work-tile .tile-foot,
+.contact-tag,
+.contact-list .label,
+footer .colophon,
+.proj-hero .band .eyebrow,
+.proj-hero .band .dates,
+.proj-section .label{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+}
 
 /* ─────────── NAV ─────────── */
 nav.top,nav.slim{
@@ -61,13 +95,11 @@ nav.top .mark,nav.slim .mark{
 }
 nav.top ul{list-style:none;margin:0;padding:0;display:flex;gap:36px}
 nav.top ul a{
-  font-family:"Cormorant SC",serif;
   font-size:14px;letter-spacing:.22em;
   border:none;color:var(--ink-mid);
 }
 nav.top ul a:hover{color:var(--honey-deep)}
 nav.slim .back{
-  font-family:"Cormorant SC",serif;
   font-size:14px;letter-spacing:.22em;
   border:none;color:var(--ink-mid);
 }
@@ -82,7 +114,6 @@ header.hero{padding:96px 0 120px}
   align-items:center;
 }
 .hero .meta-eyebrow{
-  font-family:"Cormorant SC",serif;
   font-size:13px;letter-spacing:.32em;
   color:var(--ink-soft);
   margin-bottom:40px;
@@ -98,9 +129,10 @@ header.hero{padding:96px 0 120px}
   letter-spacing:.005em;
   color:var(--ink);
 }
+/* JUSTIFIED ITALIC: signature contrast against Italiana "Mehr" (SPEC §2 surviving justifications) */
 .hero .surname{
   margin:6px 0 0;
-  font-family:"Cormorant Garamond",serif;
+  font-family:"EB Garamond",serif;
   font-style:italic;
   font-weight:400;
   font-size:clamp(64px,9vw,128px);
@@ -114,12 +146,14 @@ header.hero{padding:96px 0 120px}
   line-height:1.5;
   color:var(--ink-mid);
   max-width:540px;
-  font-style:italic;
 }
-.hero .tagline em{color:var(--honey-deep);font-style:italic}
+.hero .tagline em{
+  font-family:"EB Garamond",serif;
+  font-style:italic;
+  color:var(--honey-deep);
+}
 .hero .meta-line{
   margin-top:44px;
-  font-family:"Cormorant SC",serif;
   font-size:14px;letter-spacing:.22em;
   color:var(--ink-mid);
   display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;
@@ -169,11 +203,11 @@ section{padding:120px 0;border-top:1px solid var(--rule)}
 }
 .sec-num{
   font-family:"Italiana",serif;
+  font-variant:normal;
   font-size:14px;letter-spacing:.36em;
   color:var(--honey-deep);
 }
 .sec-eyebrow{
-  font-family:"Cormorant SC",serif;
   font-size:13px;letter-spacing:.32em;
   color:var(--ink-soft);
   display:flex;align-items:center;gap:18px;
@@ -190,13 +224,12 @@ h2.sec-title{
   max-width:860px;
 }
 h2.sec-title em{
-  font-family:"Cormorant Garamond",serif;
+  font-family:"EB Garamond",serif;
   font-style:italic;
   font-weight:400;
   color:var(--honey-deep);
 }
 .sec-aside{
-  font-style:italic;
   color:var(--ink-soft);
   font-size:16px;
   max-width:280px;
@@ -236,7 +269,7 @@ h2.sec-title em{
   height:100%;width:auto;object-fit:contain;
 }
 .brand-chip .wordmark{
-  font-family:"Cormorant Garamond",serif;
+  font-family:"EB Garamond",serif;
   font-weight:600;
   font-size:30px;
   letter-spacing:.02em;
@@ -258,6 +291,7 @@ h2.sec-title em{
 .framework:first-child{border-top:none;padding-top:0}
 .fw-meta .num{
   font-family:"Italiana",serif;
+  font-variant:normal;
   font-size:13px;letter-spacing:.36em;
   color:var(--honey-deep);
   margin-bottom:18px;display:block;
@@ -269,7 +303,8 @@ h2.sec-title em{
   margin:0 0 22px;
 }
 .fw-meta h3 em{
-  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-family:"EB Garamond",serif;
+  font-style:italic;
   color:var(--honey-deep);font-weight:400;
 }
 .fw-meta .caption{
@@ -278,8 +313,7 @@ h2.sec-title em{
   margin:0 0 26px;
 }
 .fw-meta .practice{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
+  font-family:"EB Garamond",serif;
   font-size:18px;
   color:var(--ink);
   padding-top:22px;
@@ -289,8 +323,6 @@ h2.sec-title em{
 .fw-meta .practice::before{
   content:"In my practice";
   display:block;
-  font-family:"Cormorant SC",serif;
-  font-style:normal;
   font-size:12px;
   letter-spacing:.32em;
   color:var(--honey-deep);
@@ -305,12 +337,12 @@ h2.sec-title em{
   display:flex;align-items:center;justify-content:center;
 }
 
-/* SELL formula */
+/* SELL formula — JUSTIFIED ITALIC: display device (SPEC §2) */
 .sell{display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:0}
 .sell .col{text-align:center;padding:16px 8px;border-right:1px solid var(--rule)}
 .sell .col:last-child{border-right:none}
 .sell .letter{
-  font-family:"Cormorant Garamond",serif;
+  font-family:"EB Garamond",serif;
   font-style:italic;font-weight:500;
   font-size:128px;line-height:1;
   color:var(--ink);
@@ -318,7 +350,6 @@ h2.sec-title em{
 }
 .sell .col:nth-child(2) .letter{color:var(--honey-deep)}
 .sell .word{
-  font-family:"Cormorant SC",serif;
   font-size:14px;letter-spacing:.28em;
   color:var(--ink-mid);
 }
@@ -328,8 +359,9 @@ h2.sec-title em{
 .rof .spoke{stroke:var(--rule);stroke-width:1}
 .rof .node{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
 .rof .center{fill:var(--honey);stroke:var(--honey-deep);stroke-width:1.2}
+/* JUSTIFIED ITALIC: center-label single-word accent (SPEC §2) */
 .rof .center-label{
-  font-family:"Cormorant Garamond",serif;
+  font-family:"EB Garamond",serif;
   font-style:italic;
   font-size:22px;
   fill:var(--paper);
@@ -337,7 +369,10 @@ h2.sec-title em{
   dominant-baseline:middle;
 }
 .rof .node-label{
-  font-family:"Cormorant SC",serif;
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
   font-size:15px;letter-spacing:.22em;
   fill:var(--ink-mid);
   text-anchor:middle;
@@ -355,7 +390,12 @@ h2.sec-title em{
   fill:none;stroke:var(--honey);stroke-width:4.2;
   stroke-linecap:round;
 }
-.inv text{font-family:"Cormorant SC",serif;font-weight:500}
+.inv text{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+}
 .inv .label{font-size:32px;letter-spacing:.3em}
 .inv .label.viral{fill:var(--ink-soft);opacity:.7}
 .inv .label.compound{fill:var(--honey-deep)}
@@ -380,7 +420,6 @@ h2.sec-title em{
   font-size:clamp(34px,4.4vw,56px);line-height:1.02;margin:0;
 }
 .case .lede .meta{
-  font-family:"Cormorant SC",serif;
   font-size:12px;letter-spacing:.3em;
   color:var(--ink-soft);white-space:nowrap;text-align:right;
 }
@@ -411,12 +450,11 @@ h2.sec-title em{
 .case .prose .principle{
   margin-top:28px;padding-top:22px;
   border-top:1px solid var(--rule);
-  font-style:italic;font-size:19px;color:var(--ink);
+  font-size:19px;color:var(--ink);
   position:relative;
 }
 .case .prose .principle::before{
   content:"The principle";display:block;
-  font-family:"Cormorant SC",serif;font-style:normal;
   font-size:12px;letter-spacing:.32em;color:var(--honey-deep);
   margin-bottom:8px;
 }
@@ -425,7 +463,6 @@ h2.sec-title em{
   padding:32px 30px;align-self:start;
 }
 .metrics .head{
-  font-family:"Cormorant SC",serif;
   font-size:11px;letter-spacing:.32em;color:var(--honey-deep);
   padding-bottom:14px;border-bottom:1px solid var(--rule);
   margin-bottom:18px;
@@ -437,7 +474,7 @@ h2.sec-title em{
   font-family:"Italiana",serif;font-size:34px;line-height:1;
   color:var(--ink);display:block;margin-bottom:6px;
 }
-.metrics .l{font-style:italic;font-size:15px;color:var(--ink-mid)}
+.metrics .l{font-size:15px;color:var(--ink-mid)}
 
 /* ─────────── WORK · TILE GRID (SPEC §4 W-3) ─────────── */
 .work-tiles{
@@ -463,7 +500,6 @@ h2.sec-title em{
   filter:brightness(1.08);
 }
 .work-tile::after{
-  /* subtle paper-toned wash to keep the brand color editorial, not flat */
   content:"";
   position:absolute;inset:0;
   background:
@@ -475,11 +511,11 @@ h2.sec-title em{
 .work-tile .tile-top{
   display:flex;align-items:baseline;justify-content:space-between;
   color:var(--paper);opacity:.7;
-  font-family:"Cormorant SC",serif;
   font-size:11px;letter-spacing:.3em;
 }
 .work-tile .tile-top .num{
   font-family:"Italiana",serif;
+  font-variant:normal;
   font-size:13px;letter-spacing:.32em;
 }
 .work-tile .tile-name{
@@ -491,11 +527,9 @@ h2.sec-title em{
 .work-tile .tile-foot{
   display:flex;align-items:center;justify-content:space-between;gap:18px;
   color:var(--paper);
-  font-family:"Cormorant SC",serif;
   font-size:11px;letter-spacing:.26em;
   opacity:.8;
 }
-.work-tile .tile-foot .role{font-style:normal}
 .work-tile .tile-foot .arr{
   display:inline-block;width:24px;height:1px;background:var(--paper);flex:none;
 }
@@ -510,14 +544,13 @@ h2.sec-title em{
   font-size:clamp(38px,5vw,60px);line-height:1.02;margin:0;
 }
 .contact-lead em{
-  font-family:"Cormorant Garamond",serif;
+  font-family:"EB Garamond",serif;
   font-style:italic;color:var(--honey-deep);font-weight:400;
 }
 .contact-tag{
   display:inline-block;margin-top:34px;
   padding:8px 18px;border:1px solid var(--honey);
   color:var(--honey-deep);
-  font-family:"Cormorant SC",serif;
   font-size:12px;letter-spacing:.3em;
   border-radius:2px;
 }
@@ -528,10 +561,12 @@ h2.sec-title em{
   padding:22px 0;border-bottom:1px solid var(--rule);
 }
 .contact-list .label{
-  font-family:"Cormorant SC",serif;
   font-size:12px;letter-spacing:.32em;color:var(--ink-soft);
 }
-.contact-list .value{font-size:22px;font-style:italic}
+.contact-list .value{
+  font-family:"EB Garamond",serif;
+  font-size:22px;
+}
 .contact-list .value a{border-bottom-color:transparent;color:var(--ink)}
 .contact-list .value a:hover{border-bottom-color:var(--honey);color:var(--honey-deep)}
 
@@ -546,7 +581,6 @@ footer .sig{
   color:var(--ink);margin-bottom:14px;
 }
 footer .colophon{
-  font-family:"Cormorant SC",serif;
   font-size:11px;letter-spacing:.32em;color:var(--ink-soft);
 }
 
@@ -571,7 +605,6 @@ footer .colophon{
 }
 .proj-hero .band > *{position:relative;z-index:1}
 .proj-hero .band .eyebrow{
-  font-family:"Cormorant SC",serif;
   font-size:12px;letter-spacing:.32em;opacity:.75;
 }
 .proj-hero .band h1{
@@ -579,10 +612,13 @@ footer .colophon{
   font-size:clamp(64px,8vw,108px);line-height:.95;margin:0;
 }
 .proj-hero .band .role{
-  font-style:italic;font-size:22px;opacity:.9;margin-top:18px;
+  font-size:22px;opacity:.9;margin-top:18px;
+}
+.proj-hero .band .role em{
+  font-family:"EB Garamond",serif;
+  font-style:italic;
 }
 .proj-hero .band .dates{
-  font-family:"Cormorant SC",serif;
   font-size:13px;letter-spacing:.28em;opacity:.7;margin-top:40px;
 }
 .proj-hero .paper{
@@ -591,14 +627,12 @@ footer .colophon{
   display:flex;align-items:flex-end;
 }
 .proj-hero .paper p{
-  font-style:italic;
   font-size:24px;line-height:1.5;
   color:var(--ink-mid);max-width:500px;margin:0;
 }
 
 .proj-section{padding:104px 0;border-top:1px solid var(--rule)}
 .proj-section .label{
-  font-family:"Cormorant SC",serif;
   font-size:12px;letter-spacing:.32em;color:var(--honey-deep);
   margin-bottom:28px;display:block;
 }
@@ -607,12 +641,12 @@ footer .colophon{
   font-size:clamp(36px,5vw,64px);line-height:1.05;margin:0 0 36px;
 }
 .proj-section h2 em{
-  font-family:"Cormorant Garamond",serif;
+  font-family:"EB Garamond",serif;
   font-style:italic;color:var(--honey-deep);font-weight:400;
 }
 .proj-section p.body{
   font-size:22px;line-height:1.55;
-  color:var(--ink-mid);max-width:780px;font-style:italic;
+  color:var(--ink-mid);max-width:780px;
 }
 .proj-list{
   margin:0;padding:0;list-style:none;max-width:840px;
@@ -639,7 +673,7 @@ footer .colophon{
   font-family:"Italiana",serif;font-size:54px;line-height:1;
   color:var(--ink);display:block;margin-bottom:10px;
 }
-.proj-receipts .l{font-style:italic;color:var(--ink-mid);font-size:17px}
+.proj-receipts .l{color:var(--ink-mid);font-size:17px}
 .proj-gallery{
   display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
 }

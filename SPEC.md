@@ -55,9 +55,18 @@ Placeholders until real brand assets are supplied. Used as the dominant tile bac
 ### Typography
 | Family | Use |
 |---|---|
-| Italiana | Hero "Mehr", section titles, ornamental display |
-| Cormorant Garamond (regular + italic, 400–700) | Body, surnames, italic emphasis, headings |
-| Cormorant SC | Small-caps labels, eyebrows, metadata, axis labels |
+| Italiana | Hero "Mehr", section titles, tile names, work hero h1, footer signature — the single display moment. |
+| EB Garamond (Roman, 400–700) | Default body, surnames, prose, asides, metadata, captions — the entire voice of the site outside Italiana. |
+| EB Garamond Italic | Reserved for `<em>` and explicitly justified accent classes only (see §4 T-1). Never the default voice of a paragraph or label. |
+| EB Garamond + `font-variant: all-small-caps` | Eyebrows, small-caps labels, axis labels, nav links. Replaces the previous Cormorant SC face. |
+
+**Italic surviving justifications (the only places italic is the default):**
+- `<em>` tags anywhere — emphasis is the entire point.
+- `.hero .surname` ("Patni.") — the hero signature contrast against the Italiana "Mehr".
+- `.sell .letter` (S/E/L) — display device for the framework.
+- `.rof .center-label` ("idea") — single-word accent at the center of the hub-and-spoke.
+
+Anything not on this list and using italic is a violation. The reviewer enforces.
 
 ### Type scale (effective screen px)
 | Use | Min | Target | Max |
@@ -83,7 +92,7 @@ Each section is a sealed block. Changing one must not affect others.
 
 ### Hero
 - Two-column: text left, square portrait right with honey offset frame
-- Required: name treatment (Mehr in Italiana / Patni. in Cormorant italic), tagline, meta line (Open to roles · Dubai/Remote · 8 yrs · 5 brands · 4 markets)
+- Required: name treatment (Mehr in Italiana / Patni. in EB Garamond italic — the surname signature accent on the §2 allow-list), tagline, meta line (Open to roles · Dubai/Remote · 8 yrs · 5 brands · 4 markets)
 - Portrait: `./portrait.jpg` with placeholder fallback (initials M·P)
 
 ### Brand marquee
@@ -149,6 +158,9 @@ Every per-project page follows the same template per `§4 P-1 Per-project page t
   - Grid: `repeat(auto-fill, minmax(280px, 1fr))`. Collapses to single column ≤640px.
   - Tile aspect ratio: 4:5 (portrait) on desktop.
   - No bullets, no "Read the page" repeated text, no per-tile metadata blocks (corner numerals, etc.).
+
+### Typography — invariants
+- **T-1 — Roman by default.** No CSS class may set `font-style: italic` as its default declaration unless it appears in the surviving-justifications list in §2 Typography. Italic is reserved for `<em>` and the documented signature accents. Reviewer mechanically greps every CSS rule for `font-style:italic` and fails the change if a rule outside the allow-list uses it.
 
 ### Per-project pages — invariants
 - **P-1 — Per-project page template.** Every per-project HTML file (`magna.html`, etc.) must:
