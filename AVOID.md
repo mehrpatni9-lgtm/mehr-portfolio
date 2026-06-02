@@ -8,6 +8,7 @@ Read this **before** writing copy or code. Append, don't replace.
 ## Voice & copy
 
 - **"X not Y" contrast sentence pattern.** ("…not a campaign that peaked.") Feels like LinkedIn-bro contrast copy.
+  - *Exception:* Mehr's own positioning thesis — *"built for the residue, not the peak"* — is canonical and may appear verbatim (see `SPEC §1`). Detection rule: allow if the phrase exactly matches the thesis line. Block all other "X not Y" constructions.
 - **Text-heavy walls of prose.** Editorial restraint > exhaustive explanation.
 - **Generic AI-template phrases.** No "elevate," "unlock," "transform," "synergy," "empower."
 - **Bulleted clutter.** If a list is needed, use ornamental dividers (·, ❦) or hairline-separated rows.
@@ -53,6 +54,21 @@ When a new rejection lands:
 ---
 
 ## Recent additions (most recent first)
+
+### 2026-06-03 — Re-cluttering the cover with deep content
+- **Rule:** The cover page (`index.html`) is a *navigation surface*. Hero, browse marquees, browse tiles, contact — that's it. Anything that requires sustained reading lives on a dedicated page (per `SPEC §4 PG-1`).
+- **Why:** Mehr's wireframe sketches showed the cover stripped down to navigation, with frameworks + brand teardowns moved to a dedicated `approach.html`. Stuffing both browse and deep content on the same page makes the cover unscannable.
+- **Detection:** Reviewer scans `index.html` for: full-prose case-study sections, multi-paragraph framework blocks, anything that doesn't fit "hero / marquee / tiles / contact". Flag.
+
+### 2026-06-03 — Multi-paragraph captions on framework diagrams
+- **Rule:** Each framework on `approach.html` carries title + diagram + *one* explanatory line. No multi-sentence captions. No "In my practice" paragraph alongside (that belongs on a per-project page if anywhere).
+- **Why:** Sketch 2 explicitly shows each framework with a single-line tagline beside the diagram. Multi-paragraph captions flatten the framework into prose.
+- **Detection:** Reviewer counts sentences in each `.fw-meta` block on `approach.html`; if any block has more than one sentence in the explanatory text, fail.
+
+### 2026-06-03 — Diagram label illegibility (raised floor)
+- **Rule:** SVG diagram labels must compute to ≥16px effective on screen at every viewport down to mobile (raised from 14px). Compute: `(svg_rendered_pixel_width / viewBox_width) × font_size_attribute ≥ 16`.
+- **Why:** Even at the previous 14px floor, Mehr reported the SEL Formula, Rule of Five, and Content-is-Inventory labels as illegible.
+- **Detection:** Reviewer computes effective size for every `<text>` in every SVG, at the *narrowest* render width that selector ever reaches (mobile breakpoint). Below 16 → fail.
 
 ### 2026-06-02 — Italic-by-default in CSS classes
 - **Rule:** No CSS class may declare `font-style: italic` as its default unless it is on the surviving-justifications list in `SPEC.md §2 Typography`. The default voice is roman. Italic is a tool reserved for `<em>` and a small set of documented signature accents.

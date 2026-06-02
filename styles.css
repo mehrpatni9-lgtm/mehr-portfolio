@@ -16,6 +16,7 @@
   --brand-ivory:#4A5D45;
   --brand-wahed:#0E4D3A;
   --brand-ipg:#723C1F;
+  --brand-passion:#1A1A1A;
 }
 
 *{box-sizing:border-box}
@@ -140,17 +141,46 @@ header.hero{padding:96px 0 120px}
   color:var(--ink);
 }
 .hero .surname .dot{color:var(--honey)}
-.hero .tagline{
-  margin:48px 0 0;
-  font-size:24px;
-  line-height:1.5;
+.hero .tagline,.hero .bio{
+  margin:36px 0 0;
+  font-size:21px;
+  line-height:1.55;
   color:var(--ink-mid);
   max-width:540px;
 }
-.hero .tagline em{
+.hero .tagline em,.hero .bio em{
   font-family:"EB Garamond",serif;
   font-style:italic;
   color:var(--honey-deep);
+}
+
+.hero-ctas{
+  display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;
+}
+.cta{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:14px 24px;
+  border:1px solid var(--ink);
+  background:transparent;
+  color:var(--ink);
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-size:14px;letter-spacing:.28em;font-weight:500;
+  border-radius:2px;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.cta:hover{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+.cta.solid{
+  background:var(--ink);color:var(--paper);
+}
+.cta.solid:hover{
+  background:var(--honey-deep);border-color:var(--honey-deep);color:var(--paper);
+}
+.cta .arr{
+  display:inline-block;width:18px;height:1px;background:currentColor;flex:none;
 }
 .hero .meta-line{
   margin-top:44px;
@@ -350,7 +380,7 @@ h2.sec-title em{
 }
 .sell .col:nth-child(2) .letter{color:var(--honey-deep)}
 .sell .word{
-  font-size:14px;letter-spacing:.28em;
+  font-size:18px;letter-spacing:.28em;
   color:var(--ink-mid);
 }
 
@@ -363,7 +393,7 @@ h2.sec-title em{
 .rof .center-label{
   font-family:"EB Garamond",serif;
   font-style:italic;
-  font-size:22px;
+  font-size:26px;
   fill:var(--paper);
   text-anchor:middle;
   dominant-baseline:middle;
@@ -373,7 +403,7 @@ h2.sec-title em{
   font-variant:all-small-caps;
   font-feature-settings:"c2sc","smcp";
   font-weight:500;
-  font-size:15px;letter-spacing:.22em;
+  font-size:19px;letter-spacing:.18em;
   fill:var(--ink-mid);
   text-anchor:middle;
 }
@@ -396,11 +426,11 @@ h2.sec-title em{
   font-feature-settings:"c2sc","smcp";
   font-weight:500;
 }
-.inv .label{font-size:32px;letter-spacing:.3em}
+.inv .label{font-size:38px;letter-spacing:.28em}
 .inv .label.viral{fill:var(--ink-soft);opacity:.7}
 .inv .label.compound{fill:var(--honey-deep)}
 .inv .axis-label{
-  font-size:20px;letter-spacing:.36em;
+  font-size:26px;letter-spacing:.32em;
   fill:var(--ink-soft);opacity:.7;
 }
 
@@ -584,6 +614,106 @@ footer .colophon{
   font-size:11px;letter-spacing:.32em;color:var(--ink-soft);
 }
 
+/* ─────────── APPROACH PAGE — FRAMEWORK ROW (SPEC §4 TX-2) ─────────── */
+.approach-frameworks{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-top:56px;
+  align-items:start;
+}
+.approach-fw{
+  display:flex;flex-direction:column;gap:14px;
+}
+.approach-fw .num{
+  font-family:"Italiana",serif;
+  font-variant:normal;
+  font-size:13px;letter-spacing:.36em;
+  color:var(--honey-deep);
+}
+.approach-fw h3{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:34px;line-height:1.02;margin:0;
+}
+.approach-fw h3 em{
+  font-family:"EB Garamond",serif;
+  font-style:italic;color:var(--honey-deep);font-weight:400;
+}
+/* Exactly one explanatory line per TX-2 */
+.approach-fw .line{
+  font-size:18px;color:var(--ink-mid);
+  line-height:1.45;margin:0;
+}
+.approach-fw .diag{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  padding:32px 24px;
+  min-height:320px;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:8px;
+}
+
+/* ─────────── COMPACT CAMPAIGN TILES (SPEC §4 TX-1) ─────────── */
+.campaign-tiles{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:22px;margin-top:48px;
+}
+.campaign-tile{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  display:flex;flex-direction:column;
+  color:var(--ink);
+  transition:transform .25s ease,box-shadow .25s ease;
+  overflow:hidden;
+}
+.campaign-tile:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 32px -22px rgba(58,42,26,.35);
+}
+.campaign-tile .img{
+  aspect-ratio:16/10;
+  background:var(--panel-deep);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Italiana",serif;
+  font-size:26px;color:var(--ink-soft);letter-spacing:.06em;
+  background-image:
+    repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
+}
+.campaign-tile .body{padding:22px 22px 24px}
+.campaign-tile .cat{
+  font-size:11px;letter-spacing:.28em;color:var(--ink-soft);
+  margin-bottom:8px;
+}
+.campaign-tile .name{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:30px;line-height:1.02;
+  margin:0 0 10px;
+}
+.campaign-tile .intro{
+  font-size:16px;line-height:1.45;color:var(--ink-mid);
+  margin:0 0 14px;
+}
+.campaign-tile .numbers{
+  display:flex;gap:18px;flex-wrap:wrap;
+  padding-top:14px;border-top:1px solid var(--rule);
+}
+.campaign-tile .num{
+  font-family:"Italiana",serif;
+  font-size:22px;color:var(--ink);
+  line-height:1;
+}
+.campaign-tile .num .l{
+  display:block;
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:10px;letter-spacing:.22em;
+  color:var(--ink-soft);margin-top:6px;
+}
+
 /* ─────────── PER-PROJECT PAGE TEMPLATE (SPEC §4 P-1) ─────────── */
 .proj-hero{
   display:grid;
@@ -710,6 +840,9 @@ footer .colophon{
   .proj-section{padding:72px 0}
   .proj-receipts{grid-template-columns:1fr}
   .proj-gallery{grid-template-columns:1fr;gap:14px}
+}
+@media (max-width:980px){
+  .approach-frameworks{grid-template-columns:1fr;gap:56px}
 }
 @media (max-width:640px){
   .work-tiles{grid-template-columns:1fr}

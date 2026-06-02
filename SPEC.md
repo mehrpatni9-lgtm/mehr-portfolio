@@ -49,6 +49,7 @@ Concrete test: if the same class of feedback could be given again next month aga
 | brand-ivory | `#4A5D45` | Ivory (deep sage — healthtech) |
 | brand-wahed | `#0E4D3A` | Wahed (deep emerald — fintech) |
 | brand-ipg | `#723C1F` | IPG Media (warm umber — media · agency) |
+| brand-passion | `#1A1A1A` | Passion Projects (black — distinct from company chapters) |
 
 Placeholders until real brand assets are supplied. Used as the dominant tile background + the per-project page hero accent. May be overridden by customer at any time.
 
@@ -138,7 +139,7 @@ Every per-project page follows the same template per `§4 P-1 Per-project page t
 
 ### SVG diagrams — **invariants**
 - **C-1:** All labels must render fully within parent bounds. Labels within 100 viewBox units of an edge must use `text-anchor="end"` (right edge) or `text-anchor="start"` (left edge). Never `middle` near an edge.
-- **C-2:** Minimum effective on-screen label size: 14px. Compute: `(svg_pixel_width / viewBox_width) × font_size_attribute ≥ 14`.
+- **C-2:** Minimum effective on-screen label size: **16px** (raised from 14 on 2026-06-03 after framework labels still read as illegible at the new typographic floor). Compute: `(svg_pixel_width / viewBox_width) × font_size_attribute ≥ 16`. Hold at every viewport down to mobile width.
 - **C-3:** Letter-spacing on small-caps labels: 0.26em–0.36em. Wider than 0.40em is too sparse.
 - **C-4:** SVG must include `overflow:visible` OR labels must mathematically fit within the viewBox accounting for letter-spacing width.
 - **C-5:** When a reference image is provided, match curve proportions (peak position, end position, stroke weight) to within ~10% by visual inspection.
@@ -162,6 +163,11 @@ Every per-project page follows the same template per `§4 P-1 Per-project page t
 ### Typography — invariants
 - **T-1 — Roman by default.** No CSS class may set `font-style: italic` as its default declaration unless it appears in the surviving-justifications list in §2 Typography. Italic is reserved for `<em>` and the documented signature accents. Reviewer mechanically greps every CSS rule for `font-style:italic` and fails the change if a rule outside the allow-list uses it.
 
+### Information architecture — invariants
+- **PG-1 — Section-as-page.** Deep content earns its own URL. The cover page (`index.html`) is a *navigation surface*: hero, browse marquees, browse tiles, contact. Anything that demands sustained reading — framework explanations, campaign teardowns, project deep-dives — lives on a dedicated page (`approach.html`, `magna.html`, etc.) and is reached via a tile or CTA from the cover. Re-cluttering the cover with deep content is a P-1 violation.
+- **TX-1 — Compact-by-default for browsing.** Any list meant for *browsing* (case studies grid, campaigns I read grid) uses compact tiles only: image area + name + 1 short descriptor + optional small-caps numbers. Multi-paragraph prose is for detail pages, never browse surfaces.
+- **TX-2 — One-line discipline (framework captions).** On the approach page, each framework block contains: title, diagram, exactly *one* explanatory line. No multi-sentence caption. No "In my practice" paragraph on the approach page. Detail can live elsewhere; the approach page must be scannable as a thesis.
+
 ### Per-project pages — invariants
 - **P-1 — Per-project page template.** Every per-project HTML file (`magna.html`, etc.) must:
   - Link `styles.css` for shared global CSS (no inline copies of the global system).
@@ -175,18 +181,33 @@ Every per-project page follows the same template per `§4 P-1 Per-project page t
 
 ## 5. Page structure
 
+### Cover (`index.html`) — navigation surface only
+
 ```
 nav (sticky)
-header.hero
-section (marquee)
-section#frameworks
-section#cases
-section#work          ← tile grid; links to ./{slug}.html
+header.hero            ← name + bio + 2 CTAs (See My Approach · Case Studies) + portrait
+section (marquee)      ← brands I study
+section#work           ← CASE STUDIES tile grid (her work), 6 tiles
+                         inc. Passion Projects
 section#contact
 footer
 ```
 
-Order is fixed unless customer requirement changes it explicitly.
+### Approach (`approach.html`) — the thesis
+
+```
+nav.slim
+header.proj-hero        ← "Frameworks I operate by" + one-line lede
+section#frameworks      ← 3 frameworks side-by-side; one-line caption each
+section#campaigns       ← "Campaigns I read like books" — 4 compact tiles
+                          (Duolingo, Khan, Headspace, Calm)
+footer
+```
+
+### Per-project pages (`magna.html`, `stratos.html`, …, `passion-projects.html`)
+Follow §3 Per-project one-pager + §4 P-1 unchanged.
+
+The 2-page architecture is now an invariant (see §4 PG-1). Order within each page is fixed unless customer requirement changes it explicitly.
 
 ### Multi-file structure (added 2026-06-02)
 
