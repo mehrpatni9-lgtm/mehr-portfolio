@@ -10,660 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --paper:#F2EDE3;
-  --panel:#EBE3D2;
-  --panel-deep:#E6DCC6;
-  --ink:#2A1810;
-  --ink-mid:#5A4438;
-  --ink-soft:#8B7C6A;
-  --rule:#D5CABA;
-  --honey:#A6802E;
-  --honey-deep:#80621F;
-}
-
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-html{scroll-behavior:smooth}
-
-body{
-  background:var(--paper);
-  color:var(--ink);
-  font-family:"Cormorant Garamond","EB Garamond",Georgia,serif;
-  font-size:19px;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-
-::selection{background:var(--honey);color:var(--paper)}
-
-a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
-a:hover{color:var(--honey-deep);border-color:var(--honey)}
-
-img{max-width:100%;display:block}
-
-.wrap{max-width:1180px;margin:0 auto;padding:0 48px}
-
-/* ─────────── NAV ─────────── */
-nav.top{
-  position:sticky;top:0;z-index:50;
-  background:rgba(242,237,227,.92);
-  backdrop-filter:saturate(140%) blur(8px);
-  -webkit-backdrop-filter:saturate(140%) blur(8px);
-  border-bottom:1px solid var(--rule);
-}
-nav.top .row{
-  max-width:1180px;margin:0 auto;
-  display:flex;align-items:baseline;justify-content:space-between;
-  padding:22px 48px;
-}
-nav.top .mark{
-  font-family:"Italiana",serif;
-  font-size:22px;letter-spacing:.16em;text-transform:uppercase;
-}
-nav.top ul{list-style:none;margin:0;padding:0;display:flex;gap:36px}
-nav.top ul a{
-  font-family:"Cormorant SC",serif;
-  font-size:14px;letter-spacing:.22em;
-  border:none;color:var(--ink-mid);
-}
-nav.top ul a:hover{color:var(--honey-deep)}
-
-/* ─────────── HERO ─────────── */
-header.hero{padding:96px 0 120px}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.35fr .9fr;
-  gap:88px;
-  align-items:center;
-}
-.hero .meta-eyebrow{
-  font-family:"Cormorant SC",serif;
-  font-size:13px;letter-spacing:.32em;
-  color:var(--ink-soft);
-  margin-bottom:40px;
-  display:flex;align-items:center;gap:18px;
-}
-.hero .meta-eyebrow .line{flex:1;height:1px;background:var(--rule)}
-.hero h1{
-  margin:0;
-  font-family:"Italiana",serif;
-  font-weight:400;
-  font-size:clamp(120px,18vw,260px);
-  line-height:.86;
-  letter-spacing:.005em;
-  color:var(--ink);
-}
-.hero .surname{
-  margin:6px 0 0;
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-weight:400;
-  font-size:clamp(64px,9vw,128px);
-  line-height:1;
-  color:var(--ink);
-}
-.hero .surname .dot{color:var(--honey)}
-.hero .tagline{
-  margin:48px 0 0;
-  font-size:24px;
-  line-height:1.5;
-  color:var(--ink-mid);
-  max-width:540px;
-  font-style:italic;
-}
-.hero .tagline em{color:var(--honey-deep);font-style:italic}
-.hero .meta-line{
-  margin-top:44px;
-  font-family:"Cormorant SC",serif;
-  font-size:14px;letter-spacing:.22em;
-  color:var(--ink-mid);
-  display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;
-}
-.hero .meta-line .pip{
-  width:5px;height:5px;border-radius:50%;background:var(--honey);
-  display:inline-block;
-}
-
-/* Portrait, square, with honey offset frame */
-.portrait{
-  position:relative;
-  width:100%;
-  aspect-ratio:1/1;
-  max-width:420px;
-  justify-self:end;
-}
-.portrait::before{
-  content:"";
-  position:absolute;
-  inset:18px -18px -18px 18px;
-  background:var(--honey);
-  z-index:0;
-}
-.portrait .frame{
-  position:relative;z-index:1;
-  width:100%;height:100%;
-  background:var(--panel-deep);
-  overflow:hidden;
-  border:1px solid var(--rule);
-}
-.portrait .frame img{
-  width:100%;height:100%;object-fit:cover;
-}
-.portrait .frame .ph{
-  width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:"Italiana",serif;
-  font-size:72px;
-  color:var(--ink-soft);
-  letter-spacing:.05em;
-}
-
-/* ─────────── SECTION SHELL ─────────── */
-section{padding:120px 0;border-top:1px solid var(--rule)}
-.sec-head{
-  display:flex;align-items:baseline;justify-content:space-between;
-  gap:36px;
-  margin-bottom:64px;
-}
-.sec-num{
-  font-family:"Italiana",serif;
-  font-size:14px;letter-spacing:.36em;
-  color:var(--honey-deep);
-}
-.sec-eyebrow{
-  font-family:"Cormorant SC",serif;
-  font-size:13px;letter-spacing:.32em;
-  color:var(--ink-soft);
-  display:flex;align-items:center;gap:18px;
-  margin-bottom:28px;
-}
-.sec-eyebrow .line{flex:1;height:1px;background:var(--rule);max-width:120px}
-h2.sec-title{
-  font-family:"Italiana",serif;
-  font-weight:400;
-  font-size:clamp(44px,6.4vw,84px);
-  line-height:1.02;
-  margin:0;
-  letter-spacing:.005em;
-  max-width:860px;
-}
-h2.sec-title em{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-weight:400;
-  color:var(--honey-deep);
-}
-.sec-aside{
-  font-style:italic;
-  color:var(--ink-soft);
-  font-size:16px;
-  max-width:280px;
-  text-align:right;
-}
-
-/* ─────────── BRAND MARQUEE ─────────── */
-.marquee-wrap{
-  border-top:1px solid var(--rule);
-  border-bottom:1px solid var(--rule);
-  padding:46px 0;
-  overflow:hidden;
-  background:var(--panel);
-  position:relative;
-}
-.marquee-wrap::before,
-.marquee-wrap::after{
-  content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;
-}
-.marquee-wrap::before{left:0;background:linear-gradient(to right,var(--panel),rgba(235,227,210,0))}
-.marquee-wrap::after{right:0;background:linear-gradient(to left,var(--panel),rgba(235,227,210,0))}
-.marquee-track{
-  display:flex;align-items:center;gap:76px;
-  width:max-content;
-  animation:scroll-x 55s linear infinite;
-}
-@keyframes scroll-x{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-.brand-chip{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:54px;
-  flex:none;
-}
-.brand-chip img{
-  height:100%;width:auto;object-fit:contain;
-  /* No filter — real brand colors only */
-}
-.brand-chip .wordmark{
-  font-family:"Cormorant Garamond",serif;
-  font-weight:600;
-  font-size:30px;
-  letter-spacing:.02em;
-  line-height:1;
-  color:currentColor;
-  white-space:nowrap;
-}
-
-/* ─────────── FRAMEWORKS ─────────── */
-.fw-credit{
-  font-style:italic;color:var(--ink-soft);font-size:16px;
-  margin:18px 0 0;
-}
-.fw-credit a{border-color:var(--rule)}
-.framework-stack{display:grid;gap:80px;margin-top:64px}
-.framework{
-  display:grid;
-  grid-template-columns:1.1fr 1.4fr;
-  gap:72px;
-  align-items:center;
-  padding-top:48px;
-  border-top:1px solid var(--rule);
-}
-.framework:first-child{border-top:none;padding-top:0}
-.fw-meta .num{
-  font-family:"Italiana",serif;
-  font-size:13px;letter-spacing:.36em;
-  color:var(--honey-deep);
-  margin-bottom:18px;display:block;
-}
-.fw-meta h3{
-  font-family:"Italiana",serif;
-  font-weight:400;
-  font-size:48px;line-height:1;
-  margin:0 0 22px;
-}
-.fw-meta h3 em{
-  font-family:"Cormorant Garamond",serif;font-style:italic;
-  color:var(--honey-deep);font-weight:400;
-}
-.fw-meta .caption{
-  font-size:19px;line-height:1.55;
-  color:var(--ink-mid);
-  margin:0 0 26px;
-}
-.fw-meta .practice{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-size:18px;
-  color:var(--ink);
-  padding-top:22px;
-  border-top:1px solid var(--rule);
-  position:relative;
-}
-.fw-meta .practice::before{
-  content:"In my practice";
-  display:block;
-  font-family:"Cormorant SC",serif;
-  font-style:normal;
-  font-size:12px;
-  letter-spacing:.32em;
-  color:var(--honey-deep);
-  margin-bottom:8px;
-}
-
-.fw-diagram{
-  background:var(--panel);
-  border:1px solid var(--rule);
-  padding:48px 40px;
-  min-height:340px;
-  display:flex;align-items:center;justify-content:center;
-}
-
-/* SELL formula */
-.sell{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  width:100%;gap:0;
-}
-.sell .col{
-  text-align:center;
-  padding:16px 8px;
-  border-right:1px solid var(--rule);
-}
-.sell .col:last-child{border-right:none}
-.sell .letter{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-weight:500;
-  font-size:128px;line-height:1;
-  color:var(--ink);
-  margin-bottom:18px;
-}
-.sell .col:nth-child(2) .letter{color:var(--honey-deep)}
-.sell .word{
-  font-family:"Cormorant SC",serif;
-  font-size:14px;letter-spacing:.28em;
-  color:var(--ink-mid);
-}
-
-/* Rule of Five SVG */
-.rof{width:100%;max-width:460px;height:auto}
-.rof .spoke{stroke:var(--rule);stroke-width:1}
-.rof .node{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
-.rof .center{fill:var(--honey);stroke:var(--honey-deep);stroke-width:1.2}
-.rof .center-label{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-size:22px;
-  fill:var(--paper);
-  text-anchor:middle;
-  dominant-baseline:middle;
-}
-.rof .node-label{
-  font-family:"Cormorant SC",serif;
-  font-size:15px;letter-spacing:.22em;
-  fill:var(--ink-mid);
-  text-anchor:middle;
-}
-
-/* Inventory chart */
-.inv{width:100%;height:auto;display:block;overflow:visible}
-.inv .axis{stroke:var(--ink-soft);stroke-width:1.4;opacity:.45}
-.inv .viral{
-  fill:none;stroke:var(--ink-soft);stroke-width:2.6;
-  stroke-dasharray:10 10;stroke-linecap:round;
-  opacity:.55;
-}
-.inv .compound{
-  fill:none;stroke:var(--honey);stroke-width:4.2;
-  stroke-linecap:round;
-}
-.inv text{font-family:"Cormorant SC",serif;font-weight:500}
-.inv .label{
-  font-size:32px;letter-spacing:.3em;
-}
-.inv .label.viral{fill:var(--ink-soft);opacity:.7}
-.inv .label.compound{fill:var(--honey-deep)}
-.inv .axis-label{
-  font-size:20px;letter-spacing:.36em;
-  fill:var(--ink-soft);opacity:.7;
-}
-
-/* ─────────── CASE STUDIES ─────────── */
-.cases{display:grid;gap:96px;margin-top:72px}
-.case{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:0;
-  padding-bottom:24px;
-}
-.case .lede{
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  gap:36px;align-items:baseline;
-  margin-bottom:36px;
-}
-.case .lede .n{
-  font-family:"Italiana",serif;
-  font-size:42px;
-  color:var(--honey);
-  line-height:1;
-}
-.case .lede h3{
-  font-family:"Italiana",serif;
-  font-weight:400;
-  font-size:clamp(34px,4.4vw,56px);
-  line-height:1.02;
-  margin:0;
-}
-.case .lede .meta{
-  font-family:"Cormorant SC",serif;
-  font-size:12px;letter-spacing:.3em;
-  color:var(--ink-soft);
-  white-space:nowrap;
-  text-align:right;
-}
-.case .visual{
-  aspect-ratio:21/9;
-  background:var(--panel);
-  border:1px solid var(--rule);
-  position:relative;
-  overflow:hidden;
-  margin-bottom:36px;
-}
-.case .visual img{width:100%;height:100%;object-fit:cover}
-.case .visual .ph{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  font-family:"Italiana",serif;
-  font-size:64px;letter-spacing:.08em;
-  color:var(--ink-soft);
-  background:
-    repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px),
-    var(--panel);
-}
-.case .body{
-  display:grid;
-  grid-template-columns:1.6fr .9fr;
-  gap:64px;
-}
-.case .prose p{
-  font-size:20px;line-height:1.6;
-  color:var(--ink-mid);
-  margin:0 0 18px;
-}
-.case .prose p:first-of-type::first-letter{
-  font-family:"Italiana",serif;
-  color:var(--honey-deep);
-  font-size:64px;
-  float:left;line-height:.8;padding:6px 12px 0 0;
-}
-.case .prose .principle{
-  margin-top:28px;
-  padding-top:22px;
-  border-top:1px solid var(--rule);
-  font-style:italic;
-  font-size:19px;
-  color:var(--ink);
-  position:relative;
-}
-.case .prose .principle::before{
-  content:"The principle";
-  display:block;
-  font-family:"Cormorant SC",serif;
-  font-style:normal;
-  font-size:12px;letter-spacing:.32em;
-  color:var(--honey-deep);
-  margin-bottom:8px;
-}
-.metrics{
-  background:var(--panel);
-  border:1px solid var(--rule);
-  padding:32px 30px;
-  align-self:start;
-}
-.metrics .head{
-  font-family:"Cormorant SC",serif;
-  font-size:11px;letter-spacing:.32em;
-  color:var(--honey-deep);
-  padding-bottom:14px;border-bottom:1px solid var(--rule);
-  margin-bottom:18px;
-}
-.metrics .row{
-  padding:14px 0;border-bottom:1px dashed var(--rule);
-}
-.metrics .row:last-child{border-bottom:none;padding-bottom:0}
-.metrics .row:first-of-type{padding-top:0}
-.metrics .n{
-  font-family:"Italiana",serif;
-  font-size:34px;line-height:1;
-  color:var(--ink);
-  display:block;margin-bottom:6px;
-}
-.metrics .l{
-  font-style:italic;
-  font-size:15px;
-  color:var(--ink-mid);
-}
-
-/* ─────────── WORK CARDS ─────────── */
-.work-grid{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:24px;
-  margin-top:64px;
-}
-.work-card{
-  background:var(--panel);
-  border:1px solid var(--rule);
-  padding:36px 32px 32px;
-  display:flex;flex-direction:column;
-  justify-content:space-between;
-  min-height:280px;
-  position:relative;
-  border-bottom:none;
-  color:var(--ink);
-  transition:background .25s ease, transform .25s ease;
-}
-.work-card:hover{background:var(--panel-deep);transform:translateY(-3px)}
-.work-card:nth-child(1){grid-column:span 3}
-.work-card:nth-child(2){grid-column:span 3}
-.work-card:nth-child(3){grid-column:span 2}
-.work-card:nth-child(4){grid-column:span 2}
-.work-card:nth-child(5){grid-column:span 2}
-.work-card .corner{
-  position:absolute;top:18px;right:22px;
-  font-family:"Italiana",serif;
-  font-size:13px;letter-spacing:.28em;
-  color:var(--honey-deep);
-}
-.work-card .category{
-  font-family:"Cormorant SC",serif;
-  font-size:11px;letter-spacing:.32em;
-  color:var(--ink-soft);
-  margin-bottom:18px;
-}
-.work-card .name{
-  font-family:"Italiana",serif;
-  font-weight:400;
-  font-size:44px;line-height:1;
-  margin:0 0 14px;
-  letter-spacing:.01em;
-}
-.work-card .role{
-  font-style:italic;font-size:19px;
-  color:var(--ink-mid);
-  margin-bottom:6px;
-}
-.work-card .dates{
-  font-family:"Cormorant SC",serif;
-  font-size:12px;letter-spacing:.28em;
-  color:var(--ink-soft);
-}
-.work-card .read{
-  margin-top:28px;
-  font-family:"Cormorant SC",serif;
-  font-size:12px;letter-spacing:.32em;
-  color:var(--honey-deep);
-  display:flex;align-items:center;gap:10px;
-}
-.work-card .read .arr{
-  display:inline-block;width:28px;height:1px;background:var(--honey-deep);
-}
-
-/* ─────────── CONTACT ─────────── */
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  margin-top:64px;
-  align-items:start;
-}
-.contact-lead{
-  font-family:"Italiana",serif;
-  font-weight:400;
-  font-size:clamp(38px,5vw,60px);
-  line-height:1.02;
-  margin:0;
-}
-.contact-lead em{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  color:var(--honey-deep);
-  font-weight:400;
-}
-.contact-tag{
-  display:inline-block;
-  margin-top:34px;
-  padding:8px 18px;
-  border:1px solid var(--honey);
-  color:var(--honey-deep);
-  font-family:"Cormorant SC",serif;
-  font-size:12px;letter-spacing:.3em;
-  border-radius:2px;
-}
-.contact-list{
-  list-style:none;margin:0;padding:0;
-  border-top:1px solid var(--rule);
-}
-.contact-list li{
-  display:grid;
-  grid-template-columns:140px 1fr;
-  gap:24px;align-items:baseline;
-  padding:22px 0;
-  border-bottom:1px solid var(--rule);
-}
-.contact-list .label{
-  font-family:"Cormorant SC",serif;
-  font-size:12px;letter-spacing:.32em;
-  color:var(--ink-soft);
-}
-.contact-list .value{
-  font-size:22px;
-  font-style:italic;
-}
-.contact-list .value a{
-  border-bottom-color:transparent;
-  color:var(--ink);
-}
-.contact-list .value a:hover{
-  border-bottom-color:var(--honey);
-  color:var(--honey-deep);
-}
-
-/* ─────────── FOOTER ─────────── */
-footer{
-  padding:64px 0 80px;
-  border-top:1px solid var(--rule);
-  text-align:center;
-  color:var(--ink-soft);
-}
-footer .sig{
-  font-family:"Italiana",serif;
-  font-size:22px;letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--ink);
-  margin-bottom:14px;
-}
-footer .colophon{
-  font-family:"Cormorant SC",serif;
-  font-size:11px;letter-spacing:.32em;
-  color:var(--ink-soft);
-}
-
-/* ─────────── RESPONSIVE ─────────── */
-@media (max-width:980px){
-  .wrap{padding:0 28px}
-  nav.top .row{padding:18px 28px;flex-direction:column;align-items:flex-start;gap:14px}
-  nav.top ul{gap:18px;flex-wrap:wrap}
-  header.hero{padding:60px 0 80px}
-  .hero-grid{grid-template-columns:1fr;gap:56px}
-  .portrait{max-width:340px;justify-self:start}
-  section{padding:80px 0}
-  .sec-head{flex-direction:column;align-items:flex-start;gap:14px}
-  .sec-aside{text-align:left}
-  .framework{grid-template-columns:1fr;gap:36px}
-  .case .lede{grid-template-columns:auto 1fr;gap:18px}
-  .case .lede .meta{grid-column:1/-1;text-align:left}
-  .case .body{grid-template-columns:1fr;gap:32px}
-  .work-grid{grid-template-columns:1fr}
-  .work-card:nth-child(n){grid-column:span 1}
-  .contact-grid{grid-template-columns:1fr;gap:48px}
-  .sell .letter{font-size:88px}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -975,70 +322,77 @@ footer .colophon{
   </div>
 </section>
 
-<!-- ─────────── WORK ─────────── -->
+<!-- ─────────── WORK · TILE GRID (SPEC W-3) ─────────── -->
 <section id="work">
   <div class="wrap">
     <div class="sec-eyebrow"><span class="sec-num">III.</span><span>Tenure</span><span class="line"></span></div>
     <div class="sec-head">
-      <h2 class="sec-title">Each stint, its own <em>page.</em></h2>
-      <p class="sec-aside">Five rooms, four categories, eight years of compounding craft.</p>
+      <h2 class="sec-title">Selected <em>work.</em></h2>
+      <p class="sec-aside">Five rooms · four categories · eight years of compounding craft. Each tile opens its own page.</p>
     </div>
 
-    <div class="work-grid">
-      <a class="work-card" href="./magna.html">
-        <span class="corner">i.</span>
-        <div>
-          <div class="category">Strategy ecosystem</div>
-          <h3 class="name">MAGNA</h3>
-          <div class="role">Digital Creative Director</div>
-          <div class="dates">2026 — Present</div>
+    <div class="work-tiles">
+
+      <a class="work-tile" href="./magna.html" style="--brand:var(--brand-magna)">
+        <div class="tile-top">
+          <span class="num">i.</span>
+          <span>Strategy ecosystem</span>
         </div>
-        <div class="read"><span class="arr"></span> Read the page</div>
+        <h3 class="tile-name">MAGNA</h3>
+        <div class="tile-foot">
+          <span class="role">Digital Creative Director · 2026 — Present</span>
+          <span class="arr"></span>
+        </div>
       </a>
 
-      <a class="work-card" href="./stratos.html">
-        <span class="corner">ii.</span>
-        <div>
-          <div class="category">Edtech</div>
-          <h3 class="name">Stratos</h3>
-          <div class="role">Marketing Manager</div>
-          <div class="dates">2025 — Present</div>
+      <a class="work-tile" href="./stratos.html" style="--brand:var(--brand-stratos)">
+        <div class="tile-top">
+          <span class="num">ii.</span>
+          <span>Edtech</span>
         </div>
-        <div class="read"><span class="arr"></span> Read the page</div>
+        <h3 class="tile-name">Stratos</h3>
+        <div class="tile-foot">
+          <span class="role">Marketing Manager · 2025 — Present</span>
+          <span class="arr"></span>
+        </div>
       </a>
 
-      <a class="work-card" href="./ivory.html">
-        <span class="corner">iii.</span>
-        <div>
-          <div class="category">Healthtech</div>
-          <h3 class="name">Ivory</h3>
-          <div class="role">Content Lead</div>
-          <div class="dates">2023 — 2026</div>
+      <a class="work-tile" href="./ivory.html" style="--brand:var(--brand-ivory)">
+        <div class="tile-top">
+          <span class="num">iii.</span>
+          <span>Healthtech</span>
         </div>
-        <div class="read"><span class="arr"></span> Read the page</div>
+        <h3 class="tile-name">Ivory</h3>
+        <div class="tile-foot">
+          <span class="role">Content Lead · 2023 — 2026</span>
+          <span class="arr"></span>
+        </div>
       </a>
 
-      <a class="work-card" href="./wahed.html">
-        <span class="corner">iv.</span>
-        <div>
-          <div class="category">Fintech</div>
-          <h3 class="name">Wahed</h3>
-          <div class="role">Content Writer</div>
-          <div class="dates">2022 — 2023</div>
+      <a class="work-tile" href="./wahed.html" style="--brand:var(--brand-wahed)">
+        <div class="tile-top">
+          <span class="num">iv.</span>
+          <span>Fintech</span>
         </div>
-        <div class="read"><span class="arr"></span> Read the page</div>
+        <h3 class="tile-name">Wahed</h3>
+        <div class="tile-foot">
+          <span class="role">Content Writer · 2022 — 2023</span>
+          <span class="arr"></span>
+        </div>
       </a>
 
-      <a class="work-card" href="./ipg.html">
-        <span class="corner">v.</span>
-        <div>
-          <div class="category">Media · Agency</div>
-          <h3 class="name">IPG Media</h3>
-          <div class="role">Senior Content Writer</div>
-          <div class="dates">2019 — 2022</div>
+      <a class="work-tile" href="./ipg.html" style="--brand:var(--brand-ipg)">
+        <div class="tile-top">
+          <span class="num">v.</span>
+          <span>Media · Agency</span>
         </div>
-        <div class="read"><span class="arr"></span> Read the page</div>
+        <h3 class="tile-name">IPG Media</h3>
+        <div class="tile-foot">
+          <span class="role">Senior Content Writer · 2019 — 2022</span>
+          <span class="arr"></span>
+        </div>
       </a>
+
     </div>
   </div>
 </section>

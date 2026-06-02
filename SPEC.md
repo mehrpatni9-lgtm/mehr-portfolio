@@ -41,6 +41,17 @@ Concrete test: if the same class of feedback could be given again next month aga
 
 **Hard rule:** no red, no orange-red, no pure black, no brown/sepia filter over brand logos. Brand logos render in their own brand color.
 
+### Company brand tokens (project tiles + per-project hero accents)
+| Token | Hex | Company |
+|---|---|---|
+| brand-magna | `#2C2A26` | MAGNA (graphite — strategy ecosystem) |
+| brand-stratos | `#1E3A5F` | Stratos (deep navy — edtech) |
+| brand-ivory | `#4A5D45` | Ivory (deep sage — healthtech) |
+| brand-wahed | `#0E4D3A` | Wahed (deep emerald — fintech) |
+| brand-ipg | `#723C1F` | IPG Media (warm umber — media · agency) |
+
+Placeholders until real brand assets are supplied. Used as the dominant tile background + the per-project page hero accent. May be overridden by customer at any time.
+
 ### Typography
 | Family | Use |
 |---|---|
@@ -91,10 +102,22 @@ Each section is a sealed block. Changing one must not affect others.
 - Four teardowns: Duolingo, Khan Academy, Headspace, Calm
 - Each: number + title + brand/category/date meta, 21:9 image slot with fallback, 2 short paragraphs, side metrics card (3 stats), "The principle" callout line
 
-### Work by company ("Each stint, its own page")
-- Five linked cards: MAGNA, Stratos, Ivory, Wahed, IPG Media
-- Each card links to `./{slug}.html` (separate pages, not built yet)
-- Each: category, name (Italiana), role, dates, "Read the page" cue
+### Work by company ("Selected work")
+- **Layout: visual-first tile grid** per `§4 W-3 Project-grid pattern`.
+- Five tiles: MAGNA, Stratos, Ivory, Wahed, IPG Media.
+- Each tile: full-bleed company brand color (token from §2) as the dominant graphic device; company name in Italiana set in `paper` color over the brand block; role + dates beneath in small caps; whole tile is the click target to `./{slug}.html`.
+- Section title shifts from "Each stint, its own page." to **"Selected work."** to match the tile-grid reading.
+
+### Per-project one-pager (`magna.html` / `stratos.html` / `ivory.html` / `wahed.html` / `ipg.html`)
+Every per-project page follows the same template per `§4 P-1 Per-project page template`. Section order:
+1. **Slim nav** — `Mehr Patni` mark linking back to `/`. Right-aligned "Back to portfolio" link.
+2. **Hero** — split layout: left = company name in Italiana + role + tenure + category, set on the company brand color band; right = paper-color overflow with one-line synopsis.
+3. **The brief** — single short paragraph (placeholder until customer fills).
+4. **What I did** — 4–6 hairline-separated one-liners, no bullets.
+5. **Receipts** — 3-stat row in the same `metrics` style as case studies.
+6. **Selected work** — placeholder gallery: 3 cells with 21:9 placeholder slots.
+7. **What I'd do differently** — single short paragraph.
+8. **Footer** — same as `index.html`.
 
 ### Contact
 - Editorial list, no icons
@@ -119,6 +142,22 @@ Each section is a sealed block. Changing one must not affect others.
 ### Work cards — invariants
 - **W-1:** Each card is an `<a>` linking to `./{slug}.html`.
 - **W-2:** Card hover state must not introduce new colors outside the token palette.
+- **W-3 — Project-grid pattern.** Any section that lists projects uses a visual-first tile grid:
+  - Hero visual occupies ≥60% of the tile height (the brand-color block counts as the visual when imagery isn't available).
+  - Text on tile: name (max 1 line) + one optional descriptor (max 1 line). Nothing else.
+  - Entire tile is the click target — `<a>` wraps the whole element.
+  - Grid: `repeat(auto-fill, minmax(280px, 1fr))`. Collapses to single column ≤640px.
+  - Tile aspect ratio: 4:5 (portrait) on desktop.
+  - No bullets, no "Read the page" repeated text, no per-tile metadata blocks (corner numerals, etc.).
+
+### Per-project pages — invariants
+- **P-1 — Per-project page template.** Every per-project HTML file (`magna.html`, etc.) must:
+  - Link `styles.css` for shared global CSS (no inline copies of the global system).
+  - Include a slim nav with the `Mehr Patni` mark linking to `/` and a "Back to portfolio" link.
+  - Render the hero with the company's brand-color band on the left side, name in Italiana at `paper` color over the band.
+  - Follow the section order defined in `§3 Per-project one-pager`.
+  - Reuse the global `footer` block verbatim.
+  - Only deviate by setting `--brand` to the company token. No bespoke colors.
 
 ---
 
@@ -130,21 +169,37 @@ header.hero
 section (marquee)
 section#frameworks
 section#cases
-section#work
+section#work          ← tile grid; links to ./{slug}.html
 section#contact
 footer
 ```
 
 Order is fixed unless customer requirement changes it explicitly.
 
+### Multi-file structure (added 2026-06-02)
+
+The site is no longer single-file. CSS lives in `styles.css` and is shared between `index.html` and every per-project page. Justification: per-project pages must inherit identical styling; duplicating ~30 KB of CSS across 6 files makes iteration painful. Each per-project page may include a small additional `<style>` block for its company brand color override only.
+
+```
+mehr-portfolio/
+├── index.html         ← landing
+├── styles.css         ← global system, all sections
+├── magna.html         ← per-project pages, each links styles.css
+├── stratos.html
+├── ivory.html
+├── wahed.html
+└── ipg.html
+```
+
 ---
 
 ## 6. Open requirements / known gaps
 
-- Per-company pages (`magna.html`, `stratos.html`, `ivory.html`, `wahed.html`, `ipg.html`) not yet built.
+- Per-company pages now exist as stubs — bodies are placeholder copy. Real prose to be filled by customer.
 - Real brand logos (`./logos/*.png`) not yet provided — currently rendering wordmark fallbacks.
 - Real portrait (`./portrait.jpg`) not yet provided — currently rendering M·P placeholder.
 - Case study images (`./cases/*.jpg`) not yet provided.
+- Per-company tile and hero brand colors are *placeholders* (see §2 Company brand tokens). Customer to confirm or override against real company brand systems.
 
 ---
 
