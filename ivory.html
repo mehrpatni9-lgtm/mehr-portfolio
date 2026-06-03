@@ -31,7 +31,11 @@
   </div>
   <div class="paper">
     <p>Three years writing the brand voice of a healthtech category leader — clinical credibility translated into language patients actually trust.</p>
-  </div>
+      <a class="cta download-pdf" href="./case-studies/ivory.pdf" download>
+        <span>Download case study</span>
+        <span class="arr"></span>
+      </a>
+    </div>
 </header>
 
 <section class="proj-section">
@@ -69,12 +73,19 @@
 
 <section class="proj-section">
   <div class="wrap">
-    <span class="label">Selected work</span>
-    <h2>Pieces I'd <em>show.</em></h2>
-    <div class="proj-gallery">
-      <div class="cell">Brain Health Playbook</div>
-      <div class="cell">Ivory comic universe</div>
-      <div class="cell">Founder column, issue 12</div>
+    <span class="label">Campaigns</span>
+    <h2>Real work, <em>shown.</em></h2>
+    <div class="campaign-stack">
+      <article class="campaign-block">
+        <div class="campaign-asset reel">
+          <div class="reel-ph">Drop your first reel — tell me in chat which campaign it's for.</div>
+        </div>
+        <div class="campaign-meta">
+          <span class="label">Placeholder · awaiting asset</span>
+          <h3>Your first campaign goes here.</h3>
+          <p class="purpose">Send the reel (drag to ~/Downloads + tell me) or paste the Instagram carousel URL, plus a one-sentence purpose and 2–4 outcome numbers. I'll wire it in and regenerate the PDF.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -91,6 +102,21 @@
   <div class="sig">Mehr Patni</div>
   <div class="colophon">© MMXXVI · Dubai · Set in Italiana &amp; EB Garamond</div>
 </footer>
+
+
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const v = e.target;
+        if (e.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('video[data-autoplay-on-scroll]').forEach((v) => io.observe(v));
+  }
+</script>
 
 </body>
 </html>

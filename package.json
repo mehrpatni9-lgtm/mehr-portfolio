@@ -7,7 +7,14 @@
   "scripts": {
     "review": "node screenshot.js",
     "review:live": "node screenshot.js --live",
-    "review:inventory": "node screenshot.js --section=inventory"
+    "review:inventory": "node screenshot.js --section=inventory",
+    "pdf": "node pdf.js",
+    "pdf:magna": "node pdf.js --slug=magna",
+    "pdf:stratos": "node pdf.js --slug=stratos",
+    "pdf:ivory": "node pdf.js --slug=ivory",
+    "pdf:wahed": "node pdf.js --slug=wahed",
+    "pdf:ipg": "node pdf.js --slug=ipg",
+    "pdf:passion-projects": "node pdf.js --slug=passion-projects"
   },
   "license": "ISC",
   "devDependencies": {

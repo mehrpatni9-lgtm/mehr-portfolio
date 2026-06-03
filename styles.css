@@ -754,7 +754,8 @@ footer .colophon{
 .proj-hero .paper{
   background:var(--paper);
   padding:88px 56px;
-  display:flex;align-items:flex-end;
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
+  gap:24px;
 }
 .proj-hero .paper p{
   font-size:24px;line-height:1.5;
@@ -815,6 +816,140 @@ footer .colophon{
   color:var(--ink-soft);letter-spacing:.06em;
   background-image:
     repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
+}
+
+/* ─────────── CAMPAIGN BLOCK (SPEC §4 CP-1) ─────────── */
+.campaign-stack{
+  display:flex;flex-direction:column;
+  margin-top:24px;
+  border-top:1px solid var(--rule);
+}
+.campaign-block{
+  display:grid;
+  grid-template-columns:.85fr 1fr;
+  gap:56px;align-items:center;
+  padding:64px 0;
+  border-bottom:1px solid var(--rule);
+}
+.campaign-block:last-child{border-bottom:none}
+.campaign-asset{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--rule);
+  overflow:hidden;
+}
+.campaign-asset.reel{
+  aspect-ratio:9/16;
+  max-width:380px;
+  margin:0 auto;
+}
+.campaign-asset.reel video,
+.campaign-asset.reel .reel-ph{
+  width:100%;height:100%;display:block;
+  object-fit:cover;
+}
+.campaign-asset.reel .reel-ph{
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:24px;
+  font-family:"Italiana",serif;font-size:22px;letter-spacing:.04em;
+  color:var(--ink-soft);
+  background-image:
+    repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
+}
+.campaign-asset.carousel{
+  max-width:540px;
+  margin:0 auto;
+  padding:0;
+  min-height:540px;
+  display:flex;align-items:center;justify-content:center;
+}
+.campaign-asset.carousel .carousel-ph{
+  width:100%;padding:48px 28px;
+  text-align:center;
+  font-family:"Italiana",serif;font-size:22px;letter-spacing:.04em;
+  color:var(--ink-soft);
+  background-image:
+    repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
+}
+.campaign-asset.carousel iframe,
+.campaign-asset.carousel .instagram-media{
+  width:100% !important;
+  margin:0 !important;
+  border:none !important;
+  background:transparent !important;
+  min-width:0 !important;
+}
+.campaign-meta .label{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:12px;letter-spacing:.32em;
+  color:var(--honey-deep);
+  margin-bottom:18px;
+  display:block;
+}
+.campaign-meta h3{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:clamp(32px,4.2vw,48px);line-height:1.04;
+  margin:0 0 18px;
+}
+.campaign-meta .purpose{
+  font-size:20px;line-height:1.55;
+  color:var(--ink-mid);
+  margin:0 0 28px;
+  max-width:480px;
+}
+.campaign-numbers{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:24px;
+  padding-top:24px;
+  border-top:1px solid var(--rule);
+}
+.campaign-numbers .num{
+  font-family:"Italiana",serif;
+  font-size:36px;color:var(--ink);
+  line-height:1;
+}
+.campaign-numbers .num .l{
+  display:block;
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:11px;letter-spacing:.22em;
+  color:var(--ink-soft);
+  margin-top:8px;line-height:1.3;
+}
+
+/* Download PDF CTA — sits inside .proj-hero .paper */
+.cta.download-pdf{
+  margin-top:24px;
+  align-self:flex-start;
+}
+
+/* ─────────── PRINT (SPEC §4 PDF-1) ─────────── */
+@media print{
+  :root{--paper:#fff;--ink:#1a1a1a;--ink-mid:#3a2a1a;--ink-soft:#7a6a55;--rule:#cabba6}
+  *{transition:none !important;animation:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+  body{background:#fff !important;color:#1a1a1a;font-size:14px;line-height:1.5}
+  nav,nav.top,nav.slim{display:none !important}
+  .hero-ctas,.cta,.cta.download-pdf{display:none !important}
+  .work-tiles,.campaign-tiles,.marquee-wrap{display:none !important}
+  .proj-hero{min-height:auto;page-break-inside:avoid}
+  .proj-hero .band{padding:36px;color:#fff !important}
+  .proj-hero .band::after{display:none}
+  .proj-hero .paper{padding:36px;background:#fff !important}
+  .proj-section{padding:36px 0;page-break-inside:avoid;border-top:1px solid var(--rule)}
+  .campaign-block{page-break-inside:avoid;padding:24px 0;gap:32px}
+  .campaign-asset.reel video{display:none}
+  .campaign-asset.reel::after{content:"Reel — view at " attr(data-source);display:block;padding:24px;font-style:italic;color:var(--ink-soft)}
+  .campaign-asset.carousel iframe,.campaign-asset.carousel .instagram-media{display:none}
+  .campaign-asset.carousel::after{content:"Carousel — see live link"}
+  footer{padding:24px 0;page-break-inside:avoid}
+  a{color:#1a1a1a;border-bottom:none}
+  @page{size:A4;margin:18mm 14mm}
 }
 
 /* ─────────── RESPONSIVE ─────────── */
