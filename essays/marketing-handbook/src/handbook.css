@@ -1,0 +1,366 @@
+/* Handbook visual system — feels like a printed booklet, not a slide */
+:root {
+  --paper:#F2EDE3;
+  --paper-warm:#EFE8DA;
+  --panel:#EBE3D2;
+  --panel-deep:#E6DCC6;
+  --ink:#2A1810;
+  --ink-mid:#5A4438;
+  --ink-soft:#8B7C6A;
+  --ink-faint:#B6A78F;
+  --rule:#D5CABA;
+  --honey:#A6802E;
+  --honey-deep:#80621F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"EB Garamond",Georgia,serif;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"liga","kern","onum";
+}
+
+/* ─── PAGE ─── */
+.page{
+  width:1200px;height:1500px;
+  padding:88px 96px;
+  display:flex;flex-direction:column;
+  background:
+    radial-gradient(at 12% 8%, rgba(166,128,46,.04), transparent 50%),
+    radial-gradient(at 88% 95%, rgba(58,42,26,.05), transparent 55%),
+    var(--paper);
+  position:relative;
+}
+.page::before{
+  /* very subtle grain via tiny noise svg */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240"><filter id="n"><feTurbulence baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.16  0 0 0 0 0.09  0 0 0 0 0.06  0 0 0 0.06 0"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+  opacity:.35;
+  mix-blend-mode:multiply;
+}
+.page > *{position:relative;z-index:1}
+
+/* ─── HEADER ─── */
+.page-header{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--rule);
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:14px;letter-spacing:.32em;
+  color:var(--ink-soft);
+}
+.page-header .running{color:var(--ink-soft)}
+.page-header .num{color:var(--honey-deep);font-variant:normal;font-style:italic;letter-spacing:.18em;font-size:15px}
+
+/* ─── CHAPTER LINE ─── */
+.chapter{
+  display:block;
+  margin:36px 0 18px;
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:13px;letter-spacing:.36em;
+  color:var(--honey-deep);
+}
+
+/* ─── HEADINGS ─── */
+.page-title{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:84px;line-height:1;
+  letter-spacing:.005em;
+  margin:0 0 22px;
+  max-width:920px;
+  color:var(--ink);
+}
+.page-title.lg{font-size:108px}
+.page-title.sm{font-size:64px}
+.page-title em{
+  font-family:"EB Garamond",serif;font-style:italic;
+  color:var(--honey-deep);
+}
+.kicker{
+  font-style:italic;
+  font-size:24px;line-height:1.5;
+  color:var(--ink-mid);
+  max-width:780px;
+  margin-bottom:36px;
+}
+
+/* ─── BODY ─── */
+.body{
+  flex:1;
+  display:flex;flex-direction:column;gap:24px;
+}
+.body p{
+  font-size:21px;line-height:1.55;
+  color:var(--ink);
+  max-width:820px;
+}
+.body p.lead::first-letter{
+  font-family:"Italiana",serif;
+  font-size:84px;line-height:.75;
+  float:left;padding:8px 14px 0 0;
+  color:var(--honey-deep);
+}
+.body p.muted{color:var(--ink-mid);font-size:19px}
+
+/* ─── PULL QUOTE ─── */
+.pull{
+  font-family:"Italiana",serif;
+  font-size:42px;line-height:1.1;
+  color:var(--honey-deep);
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:28px 0;
+  margin:28px 0;
+  max-width:880px;
+}
+.pull em{font-family:"EB Garamond",serif;font-style:italic;font-size:38px;color:var(--ink)}
+
+/* ─── FIGURE FRAME ─── */
+.figure{
+  margin:24px 0;
+}
+.figure-frame{
+  background:var(--paper-warm);
+  border:1px solid var(--rule);
+  padding:32px 36px;
+  position:relative;
+}
+.figure-caption{
+  margin-top:12px;
+  display:flex;align-items:baseline;gap:14px;
+  font-family:"EB Garamond",serif;
+  font-style:italic;
+  font-size:15px;color:var(--ink-soft);
+}
+.figure-caption .lbl{
+  font-style:normal;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  letter-spacing:.28em;
+  color:var(--honey-deep);
+}
+
+/* ─── FOOTER ─── */
+.page-footer{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:12px;letter-spacing:.32em;
+  color:var(--ink-soft);
+}
+.page-footer .sig{font-family:"Italiana",serif;font-variant:normal;letter-spacing:.16em;text-transform:uppercase;font-size:14px;color:var(--ink)}
+
+/* ─── ORNAMENT ─── */
+.orn{
+  display:block;text-align:center;
+  font-family:"Italiana",serif;
+  color:var(--honey);font-size:24px;
+  letter-spacing:.8em;
+  margin:24px 0;
+}
+
+/* ─── COVER ─── */
+.cover{
+  flex:1;
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+}
+.cover .eyebrow{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:18px;letter-spacing:.36em;color:var(--ink-soft);
+  margin-bottom:48px;
+}
+.cover h1{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:148px;line-height:.92;letter-spacing:.005em;
+  margin:0 0 36px;color:var(--ink);
+}
+.cover h1 em{
+  font-family:"EB Garamond",serif;font-style:italic;
+  color:var(--honey-deep);
+}
+.cover .by{
+  font-style:italic;font-size:28px;color:var(--ink-mid);margin-bottom:18px;
+}
+.cover .strap{
+  font-size:21px;color:var(--ink-mid);max-width:680px;
+  border-top:1px solid var(--rule);padding-top:24px;margin-top:24px;
+}
+
+/* ─── 5 QUALITIES GRID ─── */
+.qualities{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
+  margin-top:28px;
+}
+.qualities .q{
+  background:var(--paper-warm);
+  border:1px solid var(--rule);
+  padding:24px 18px 22px;
+  display:flex;flex-direction:column;
+  min-height:340px;
+}
+.qualities .q .ord{
+  font-family:"Italiana",serif;
+  font-size:14px;letter-spacing:.34em;
+  color:var(--honey-deep);
+  margin-bottom:14px;
+}
+.qualities .q .name{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:30px;line-height:1.04;
+  margin:0 0 14px;
+}
+.qualities .q .name em{font-family:"EB Garamond",serif;font-style:italic;color:var(--honey-deep)}
+.qualities .q .desc{
+  font-size:14.5px;line-height:1.5;color:var(--ink-mid);
+  margin:0 0 14px;
+}
+.qualities .q .ex{
+  margin-top:auto;
+  font-family:"EB Garamond",serif;
+  font-style:italic;
+  font-size:13px;color:var(--ink-soft);
+  border-top:1px solid var(--rule);padding-top:12px;
+}
+
+/* ─── FORMAT PAGE ─── */
+.fmt-head{
+  display:grid;grid-template-columns:auto 1fr auto;
+  gap:24px;align-items:baseline;
+  margin-bottom:18px;
+}
+.fmt-head .ord{
+  font-family:"Italiana",serif;
+  font-size:48px;line-height:1;color:var(--honey);
+}
+.fmt-head .name{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:84px;line-height:1;letter-spacing:.005em;color:var(--ink);
+  margin:0;
+}
+.fmt-head .tag{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:14px;letter-spacing:.32em;
+  color:var(--ink-soft);white-space:nowrap;
+}
+.fmt-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  margin-top:24px;
+}
+.fmt-card{
+  border-top:1px solid var(--rule);
+  padding-top:22px;
+}
+.fmt-card .lbl{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:13px;letter-spacing:.32em;
+  color:var(--honey-deep);
+  margin-bottom:14px;display:block;
+}
+.fmt-card .h{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:30px;line-height:1.04;
+  margin:0 0 12px;
+}
+.fmt-card .h em{font-family:"EB Garamond",serif;font-style:italic;color:var(--honey-deep)}
+.fmt-card p{font-size:17px;line-height:1.5;color:var(--ink-mid);max-width:420px}
+.fmt-card ul{
+  list-style:none;padding:0;margin:0;
+}
+.fmt-card ul li{
+  font-size:17px;color:var(--ink);line-height:1.5;
+  padding:10px 0;border-bottom:1px dashed var(--rule);
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
+}
+.fmt-card ul li:last-child{border-bottom:none}
+.fmt-card ul li::before{
+  content:"";width:16px;height:1px;background:var(--honey);position:relative;top:-5px;
+}
+.fmt-mantra{
+  margin-top:32px;
+  padding:24px 28px;
+  background:var(--ink);color:var(--paper);
+  border-radius:2px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+}
+.fmt-mantra .quote{
+  font-family:"Italiana",serif;
+  font-size:32px;line-height:1.1;color:var(--paper);
+}
+.fmt-mantra .quote em{font-family:"EB Garamond",serif;font-style:italic;color:var(--honey)}
+.fmt-mantra .by{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+  font-size:12px;letter-spacing:.32em;
+  color:var(--honey);
+  white-space:nowrap;
+}
+
+/* ─── FORMAT MINI-DIAGRAMS ─── */
+.fmt-diag{
+  background:var(--paper-warm);
+  border:1px solid var(--rule);
+  padding:24px;
+  margin-top:18px;
+  display:flex;align-items:center;justify-content:center;
+  min-height:280px;
+}
+.fmt-diag svg{display:block;width:100%;height:auto;max-height:340px}
+
+/* ─── MANTRAS PAGE ─── */
+.mantras{
+  display:flex;flex-direction:column;gap:22px;margin-top:36px;
+}
+.mantras .m{
+  display:grid;grid-template-columns:60px 1fr;
+  gap:24px;align-items:baseline;
+  padding-bottom:18px;border-bottom:1px solid var(--rule);
+}
+.mantras .m:last-child{border-bottom:none}
+.mantras .m .n{
+  font-family:"Italiana",serif;font-size:30px;color:var(--honey);
+}
+.mantras .m .t{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:32px;line-height:1.06;color:var(--ink);
+}
+.mantras .m .t em{font-family:"EB Garamond",serif;font-style:italic;color:var(--honey-deep)}
+
+/* ─── COMMON SVG TEXT ─── */
+svg text.sc{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;
+}
+svg text.ital{font-family:"EB Garamond",serif;font-style:italic}
+svg text.italiana{font-family:"Italiana",serif;font-weight:400}
