@@ -20,6 +20,11 @@ Read this **before** writing copy or code. Append, don't replace.
    personal. Not a generic template. When in doubt, return to the PDF deck.
 4. **The portrait must be well-composed** — her face properly centred in its
    frame at every viewport. Never crop the face awkwardly.
+5. **No em dashes (—) in site copy. HARD RULE (2026-06-05).** Use a comma, period,
+   colon, semicolon, or parentheses instead. Only exceptions: a true range uses an
+   en dash (e.g. `2022–2023`); a title separator uses a middot (`·`). Reviewer
+   greps every `.html`/`.css` for `—` and fails on any hit. (The em dash reads as a
+   tic / AI tell; Mehr asked it gone everywhere.)
 
 ---
 
