@@ -7,8 +7,17 @@
   --ink-mid:#5A4438;
   --ink-soft:#8B7C6A;
   --rule:#D5CABA;
-  --honey:#A6802E;
-  --honey-deep:#80621F;
+
+  /* SIGNATURE RED — chosen 2026-06-05 as the real accent (hybrid direction).
+     The honey tokens are repointed to red so the whole multi-page system
+     shifts coherently; --honey-true kept for the rare warm-gold need. */
+  --red:#A6201A;
+  --red-deep:#7C140F;
+  --red-bleed:#9B1B16;       /* full-bleed band background */
+  --red-bleed-deep:#7E1410;  /* gradient floor on bands */
+  --honey:#A6201A;
+  --honey-deep:#7C140F;
+  --honey-true:#A6802E;
 
   /* Company brand tokens — placeholders, may be overridden */
   --brand-magna:#2C2A26;
@@ -214,7 +223,7 @@ header.hero{padding:96px 0 120px}
   overflow:hidden;
   border:1px solid var(--rule);
 }
-.portrait .frame img{width:100%;height:100%;object-fit:cover}
+.portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
 .portrait .frame .ph{
   width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
@@ -981,4 +990,181 @@ footer .colophon{
 }
 @media (max-width:640px){
   .work-tiles{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HYBRID ADDITIONS — 2026-06-05
+   Deck energy folded into the editorial system: red as the real
+   accent (tokens repointed above), two full-bleed red bands, and
+   the deck's content sections (about, expertise, project links).
+   Each block is isolated; none restyles an existing section.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Hero external links (Resume · Medium · LinkedIn) ── */
+.hero-links{
+  display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;
+}
+.hero-links a{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 18px;
+  border:1px solid var(--rule);border-radius:999px;
+  background:var(--paper);color:var(--ink-mid);
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;
+  font-feature-settings:"c2sc","smcp";
+  font-weight:500;font-size:13px;letter-spacing:.2em;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.hero-links a:hover{
+  border-color:var(--red);color:var(--red-deep);background:#fff;
+}
+.hero-links a .d{width:5px;height:5px;border-radius:50%;background:var(--red);flex:none}
+
+/* ── About ── */
+.about-grid{
+  display:grid;grid-template-columns:1.1fr 1fr;
+  gap:72px;margin-top:56px;align-items:start;
+}
+.about-lead{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:clamp(28px,3.4vw,42px);line-height:1.12;
+  margin:0 0 28px;color:var(--ink);
+}
+.about-lead em{
+  font-family:"EB Garamond",serif;font-style:italic;
+  color:var(--red-deep);font-weight:400;
+}
+.about p{
+  font-size:19px;line-height:1.6;color:var(--ink-mid);margin:0 0 18px;
+}
+.about p strong{
+  font-weight:600;color:var(--ink);
+}
+.about p em{font-style:italic;color:var(--red-deep)}
+.about .kicker{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
+  font-weight:500;font-size:12px;letter-spacing:.32em;
+  color:var(--red-deep);margin:0 0 14px;display:block;
+}
+
+/* ── Full-bleed RED band ── */
+.band-red{
+  background:
+    radial-gradient(at 85% 8%, rgba(255,255,255,.06), transparent 55%),
+    radial-gradient(at 8% 95%, rgba(0,0,0,.20), transparent 55%),
+    var(--red-bleed);
+  color:var(--paper);
+  border-top:none;
+  position:relative;
+}
+.band-red .sec-eyebrow{color:rgba(242,237,227,.7)}
+.band-red .sec-eyebrow .line{background:rgba(242,237,227,.3)}
+.band-red .sec-num{color:rgba(242,237,227,.85)}
+.band-red h2.sec-title{color:var(--paper)}
+.band-red h2.sec-title em{color:#F4D9A8}
+.band-red .sec-aside{color:rgba(242,237,227,.78)}
+
+/* ── Expertise chip field (lives inside .band-red) ── */
+.chip-field{
+  display:flex;flex-wrap:wrap;gap:14px 16px;
+  margin-top:8px;max-width:980px;
+}
+.chip-field .chip{
+  font-family:"EB Garamond",serif;
+  font-size:clamp(18px,2vw,26px);line-height:1;
+  color:var(--paper);
+  padding:12px 22px;
+  border:1px solid rgba(242,237,227,.32);
+  border-radius:999px;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.chip-field .chip.lg{
+  font-size:clamp(24px,2.8vw,38px);
+  font-style:italic;
+}
+.chip-field .chip.solid{
+  background:var(--paper);color:var(--red-deep);border-color:var(--paper);
+}
+.chip-field .chip:hover{
+  background:rgba(242,237,227,.12);border-color:rgba(242,237,227,.6);
+}
+
+/* ── Projects & Campaigns — clickable link chips ── */
+.link-chips{
+  display:flex;flex-wrap:wrap;gap:14px;margin-top:48px;
+}
+.link-chips a{
+  display:inline-flex;align-items:baseline;gap:12px;
+  background:var(--panel);
+  border:1px solid var(--rule);border-radius:999px;
+  padding:13px 24px;
+  font-family:"EB Garamond",serif;
+  font-size:clamp(18px,1.9vw,24px);line-height:1;
+  color:var(--ink);
+  transition:transform .2s ease,border-color .2s,color .2s,background .2s;
+}
+.link-chips a .n{
+  font-family:"Italiana",serif;font-size:13px;letter-spacing:.06em;
+  color:var(--red);position:relative;top:-2px;
+}
+.link-chips a:hover{
+  transform:translateY(-2px);
+  border-color:var(--red);color:var(--red-deep);background:#fff;
+}
+.link-chips a.more{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+.link-chips a.more:hover{background:var(--red-deep);border-color:var(--red-deep);color:var(--paper)}
+.link-note{
+  margin-top:26px;font-size:13px;letter-spacing:.04em;
+  color:var(--ink-soft);font-style:italic;
+}
+
+/* ── Let's Work closing (inside .band-red) ── */
+.lets-grid{
+  display:grid;grid-template-columns:1.25fr .9fr;
+  gap:72px;align-items:end;margin-top:8px;
+}
+.lets-copy p{
+  font-family:"EB Garamond",serif;font-style:italic;
+  font-size:clamp(22px,2.6vw,32px);line-height:1.4;
+  color:var(--paper);margin:0 0 22px;max-width:640px;
+}
+.lets-copy p.flat{font-style:normal}
+.lets-copy p em{color:#F4D9A8;font-style:italic}
+.lets-trivia{
+  margin-top:30px;font-size:14px;letter-spacing:.04em;
+  color:rgba(242,237,227,.72);font-style:italic;max-width:420px;
+}
+.lets-card{
+  background:rgba(242,237,227,.08);
+  border:1px solid rgba(242,237,227,.28);
+  border-radius:4px;padding:34px 32px;
+}
+.lets-card .big{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:clamp(40px,5vw,64px);line-height:.96;
+  color:var(--paper);margin:0 0 26px;
+}
+.lets-list{list-style:none;margin:0;padding:0}
+.lets-list li{
+  display:grid;grid-template-columns:84px 1fr;gap:18px;align-items:baseline;
+  padding:16px 0;border-bottom:1px solid rgba(242,237,227,.2);
+}
+.lets-list li:last-child{border-bottom:none}
+.lets-list .k{
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
+  font-weight:500;font-size:12px;letter-spacing:.24em;
+  color:rgba(242,237,227,.7);
+}
+.lets-list .v{font-size:19px;color:var(--paper)}
+.lets-list .v a{color:var(--paper);border-bottom-color:rgba(242,237,227,.4)}
+.lets-list .v a:hover{border-bottom-color:var(--paper);color:#F4D9A8}
+
+/* ── Hybrid responsive ── */
+@media (max-width:980px){
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .lets-grid{grid-template-columns:1fr;gap:44px}
 }
