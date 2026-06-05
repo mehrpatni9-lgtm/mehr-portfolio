@@ -727,13 +727,12 @@ footer .colophon{
 .proj-hero{
   display:grid;
   grid-template-columns:.85fr 1fr;
-  min-height:520px;
 }
 .proj-hero .band{
   background:var(--brand,var(--ink));
   color:var(--paper);
-  padding:88px 56px;
-  display:flex;flex-direction:column;justify-content:space-between;
+  padding:52px 56px;
+  display:flex;flex-direction:column;justify-content:center;gap:0;
   position:relative;overflow:hidden;
 }
 .proj-hero .band::after{
@@ -748,26 +747,26 @@ footer .colophon{
 }
 .proj-hero .band h1{
   font-family:"Italiana",serif;font-weight:400;
-  font-size:clamp(64px,8vw,108px);line-height:.95;margin:0;
+  font-size:clamp(46px,5.6vw,78px);line-height:.98;margin:14px 0 0;
 }
 .proj-hero .band .role{
-  font-size:22px;opacity:.9;margin-top:18px;
+  font-size:20px;opacity:.9;margin-top:14px;
 }
 .proj-hero .band .role em{
   font-family:"EB Garamond",serif;
   font-style:italic;
 }
 .proj-hero .band .dates{
-  font-size:13px;letter-spacing:.28em;opacity:.7;margin-top:40px;
+  font-size:13px;letter-spacing:.28em;opacity:.7;margin-top:22px;
 }
 .proj-hero .paper{
   background:var(--paper);
-  padding:88px 56px;
-  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
+  padding:52px 56px;
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
   gap:24px;
 }
 .proj-hero .paper p{
-  font-size:24px;line-height:1.5;
+  font-size:22px;line-height:1.5;
   color:var(--ink-mid);max-width:500px;margin:0;
 }
 
