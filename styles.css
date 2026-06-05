@@ -1,12 +1,21 @@
+/* ─────────── FONTS ─────────── */
+@font-face{font-family:"Switzer";src:url("fonts/switzer/switzer-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("fonts/switzer/switzer-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("fonts/switzer/switzer-600.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("fonts/switzer/switzer-700.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+
 /* ─────────── DESIGN TOKENS ─────────── */
 :root{
-  --paper:#F2EDE3;
-  --panel:#EBE3D2;
-  --panel-deep:#E6DCC6;
-  --ink:#2A1810;
-  --ink-mid:#5A4438;
-  --ink-soft:#8B7C6A;
-  --rule:#D5CABA;
+  --font-display:"Instrument Serif",Georgia,serif;
+  --font-label:"Switzer","Inter",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
+  --paper:#F4F2EC;
+  --panel:#ECE8DF;
+  --panel-deep:#E4DFD4;
+  --ink:#1A1714;
+  --ink-mid:#55504A;
+  --ink-soft:#8A847A;
+  --rule:#DED9CE;
 
   /* SIGNATURE RED, chosen 2026-06-05 as the real accent (hybrid direction).
      The honey tokens are repointed to red so the whole multi-page system
@@ -35,10 +44,11 @@ html{scroll-behavior:smooth}
 body{
   background:var(--paper);
   color:var(--ink);
-  font-family:"EB Garamond",Georgia,serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-weight:400;
-  font-size:19px;
-  line-height:1.55;
+  font-size:17px;
+  line-height:1.6;
+  letter-spacing:-0.005em;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
   font-feature-settings:"liga","kern";
@@ -79,16 +89,21 @@ footer .colophon,
 .proj-hero .band .eyebrow,
 .proj-hero .band .dates,
 .proj-section .label{
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
-  font-feature-settings:"c2sc","smcp";
+  font-family:var(--font-label);
+  text-transform:uppercase;
   font-weight:500;
+}
+/* All uppercase labels / section headings use Switzer (the Neue Montreal stand-in) */
+.label,.cat,.open,.cover-eyebrow,.cover-meta,.cover-links a,.hero-links a,
+.gallery-tile .cat,.gallery-tile .open,.lets-list .k,.link-chips a .n,
+.chip-field .chip,.metrics .head,.campaign-meta .label,.campaign-tile .cat{
+  font-family:var(--font-label);
 }
 
 /* ─────────── NAV ─────────── */
 nav.top,nav.slim{
   position:sticky;top:0;z-index:50;
-  background:rgba(242,237,227,.92);
+  background:rgba(244,242,236,.9);
   backdrop-filter:saturate(140%) blur(8px);
   -webkit-backdrop-filter:saturate(140%) blur(8px);
   border-bottom:1px solid var(--rule);
@@ -99,7 +114,7 @@ nav.top .row,nav.slim .row{
   padding:22px 48px;
 }
 nav.top .mark,nav.slim .mark{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:22px;letter-spacing:.16em;text-transform:uppercase;
   border:none;color:var(--ink);
 }
@@ -132,7 +147,7 @@ header.hero{padding:96px 0 120px}
 .hero .meta-eyebrow .line{flex:1;height:1px;background:var(--rule)}
 .hero h1{
   margin:0;
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-weight:400;
   font-size:clamp(120px,18vw,260px);
   line-height:.86;
@@ -142,7 +157,7 @@ header.hero{padding:96px 0 120px}
 /* JUSTIFIED ITALIC: signature contrast against Italiana "Mehr" (SPEC §2 surviving justifications) */
 .hero .surname{
   margin:6px 0 0;
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;
   font-weight:400;
   font-size:clamp(64px,9vw,128px);
@@ -158,7 +173,7 @@ header.hero{padding:96px 0 120px}
   max-width:540px;
 }
 .hero .tagline em,.hero .bio em{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;
   color:var(--honey-deep);
 }
@@ -172,8 +187,8 @@ header.hero{padding:96px 0 120px}
   border:1px solid var(--ink);
   background:transparent;
   color:var(--ink);
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";
   font-size:14px;letter-spacing:.28em;font-weight:500;
   border-radius:2px;
@@ -227,7 +242,7 @@ header.hero{padding:96px 0 120px}
 .portrait .frame .ph{
   width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:72px;
   color:var(--ink-soft);
   letter-spacing:.05em;
@@ -241,7 +256,7 @@ section{padding:120px 0;border-top:1px solid var(--rule)}
   margin-bottom:64px;
 }
 .sec-num{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-variant:normal;
   font-size:14px;letter-spacing:.36em;
   color:var(--honey-deep);
@@ -254,7 +269,7 @@ section{padding:120px 0;border-top:1px solid var(--rule)}
 }
 .sec-eyebrow .line{flex:1;height:1px;background:var(--rule);max-width:120px}
 h2.sec-title{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-weight:400;
   font-size:clamp(44px,6.4vw,84px);
   line-height:1.02;
@@ -263,7 +278,7 @@ h2.sec-title{
   max-width:860px;
 }
 h2.sec-title em{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;
   font-weight:400;
   color:var(--honey-deep);
@@ -308,7 +323,7 @@ h2.sec-title em{
   height:100%;width:auto;object-fit:contain;
 }
 .brand-chip .wordmark{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-weight:600;
   font-size:30px;
   letter-spacing:.02em;
@@ -329,20 +344,20 @@ h2.sec-title em{
 }
 .framework:first-child{border-top:none;padding-top:0}
 .fw-meta .num{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-variant:normal;
   font-size:13px;letter-spacing:.36em;
   color:var(--honey-deep);
   margin-bottom:18px;display:block;
 }
 .fw-meta h3{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-weight:400;
   font-size:48px;line-height:1;
   margin:0 0 22px;
 }
 .fw-meta h3 em{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;
   color:var(--honey-deep);font-weight:400;
 }
@@ -352,7 +367,7 @@ h2.sec-title em{
   margin:0 0 26px;
 }
 .fw-meta .practice{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-size:18px;
   color:var(--ink);
   padding-top:22px;
@@ -381,7 +396,7 @@ h2.sec-title em{
 .sell .col{text-align:center;padding:16px 8px;border-right:1px solid var(--rule)}
 .sell .col:last-child{border-right:none}
 .sell .letter{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;font-weight:500;
   font-size:128px;line-height:1;
   color:var(--ink);
@@ -400,7 +415,7 @@ h2.sec-title em{
 .rof .center{fill:var(--honey);stroke:var(--honey-deep);stroke-width:1.2}
 /* JUSTIFIED ITALIC: center-label single-word accent (SPEC §2) */
 .rof .center-label{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;
   font-size:26px;
   fill:var(--paper);
@@ -408,8 +423,8 @@ h2.sec-title em{
   dominant-baseline:middle;
 }
 .rof .node-label{
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";
   font-weight:500;
   font-size:19px;letter-spacing:.18em;
@@ -430,8 +445,8 @@ h2.sec-title em{
   stroke-linecap:round;
 }
 .inv text{
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";
   font-weight:500;
 }
@@ -451,11 +466,11 @@ h2.sec-title em{
   gap:36px;align-items:baseline;margin-bottom:36px;
 }
 .case .lede .n{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:42px;color:var(--honey);line-height:1;
 }
 .case .lede h3{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(34px,4.4vw,56px);line-height:1.02;margin:0;
 }
 .case .lede .meta{
@@ -471,7 +486,7 @@ h2.sec-title em{
 .case .visual .ph{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:64px;letter-spacing:.08em;color:var(--ink-soft);
   background:
     repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px),
@@ -483,7 +498,7 @@ h2.sec-title em{
   color:var(--ink-mid);margin:0 0 18px;
 }
 .case .prose p:first-of-type::first-letter{
-  font-family:"Italiana",serif;color:var(--honey-deep);
+  font-family:"Instrument Serif",Georgia,serif;color:var(--honey-deep);
   font-size:64px;float:left;line-height:.8;padding:6px 12px 0 0;
 }
 .case .prose .principle{
@@ -510,7 +525,7 @@ h2.sec-title em{
 .metrics .row:last-child{border-bottom:none;padding-bottom:0}
 .metrics .row:first-of-type{padding-top:0}
 .metrics .n{
-  font-family:"Italiana",serif;font-size:34px;line-height:1;
+  font-family:"Instrument Serif",Georgia,serif;font-size:34px;line-height:1;
   color:var(--ink);display:block;margin-bottom:6px;
 }
 .metrics .l{font-size:15px;color:var(--ink-mid)}
@@ -553,12 +568,12 @@ h2.sec-title em{
   font-size:11px;letter-spacing:.3em;
 }
 .work-tile .tile-top .num{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-variant:normal;
   font-size:13px;letter-spacing:.32em;
 }
 .work-tile .tile-name{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(44px,4.8vw,60px);
   line-height:.95;letter-spacing:.01em;
   color:var(--paper);margin:0;
@@ -579,11 +594,11 @@ h2.sec-title em{
   gap:80px;margin-top:64px;align-items:start;
 }
 .contact-lead{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(38px,5vw,60px);line-height:1.02;margin:0;
 }
 .contact-lead em{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;color:var(--honey-deep);font-weight:400;
 }
 .contact-tag{
@@ -603,7 +618,7 @@ h2.sec-title em{
   font-size:12px;letter-spacing:.32em;color:var(--ink-soft);
 }
 .contact-list .value{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-size:22px;
 }
 .contact-list .value a{border-bottom-color:transparent;color:var(--ink)}
@@ -615,7 +630,7 @@ footer{
   text-align:center;color:var(--ink-soft);
 }
 footer .sig{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:22px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--ink);margin-bottom:14px;
 }
@@ -635,17 +650,17 @@ footer .colophon{
   display:flex;flex-direction:column;gap:14px;
 }
 .approach-fw .num{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-variant:normal;
   font-size:13px;letter-spacing:.36em;
   color:var(--honey-deep);
 }
 .approach-fw h3{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:34px;line-height:1.02;margin:0;
 }
 .approach-fw h3 em{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;color:var(--honey-deep);font-weight:400;
 }
 /* Exactly one explanatory line per TX-2 */
@@ -685,7 +700,7 @@ footer .colophon{
   background:var(--panel-deep);
   position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:26px;color:var(--ink-soft);letter-spacing:.06em;
   background-image:
     repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
@@ -696,7 +711,7 @@ footer .colophon{
   margin-bottom:8px;
 }
 .campaign-tile .name{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:30px;line-height:1.02;
   margin:0 0 10px;
 }
@@ -709,14 +724,14 @@ footer .colophon{
   padding-top:14px;border-top:1px solid var(--rule);
 }
 .campaign-tile .num{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:22px;color:var(--ink);
   line-height:1;
 }
 .campaign-tile .num .l{
   display:block;
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";
   font-weight:500;
   font-size:10px;letter-spacing:.22em;
@@ -746,14 +761,14 @@ footer .colophon{
   font-size:12px;letter-spacing:.32em;opacity:.75;
 }
 .proj-hero .band h1{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(46px,5.6vw,78px);line-height:.98;margin:14px 0 0;
 }
 .proj-hero .band .role{
   font-size:20px;opacity:.9;margin-top:14px;
 }
 .proj-hero .band .role em{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;
 }
 .proj-hero .band .dates{
@@ -776,11 +791,11 @@ footer .colophon{
   margin-bottom:28px;display:block;
 }
 .proj-section h2{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(36px,5vw,64px);line-height:1.05;margin:0 0 36px;
 }
 .proj-section h2 em{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-style:italic;color:var(--honey-deep);font-weight:400;
 }
 .proj-section p.body{
@@ -809,7 +824,7 @@ footer .colophon{
   padding:32px 28px;
 }
 .proj-receipts .n{
-  font-family:"Italiana",serif;font-size:54px;line-height:1;
+  font-family:"Instrument Serif",Georgia,serif;font-size:54px;line-height:1;
   color:var(--ink);display:block;margin-bottom:10px;
 }
 .proj-receipts .l{color:var(--ink-mid);font-size:17px}
@@ -820,7 +835,7 @@ footer .colophon{
   aspect-ratio:21/9;background:var(--panel);
   border:1px solid var(--rule);
   display:flex;align-items:center;justify-content:center;
-  font-family:"Italiana",serif;font-size:24px;
+  font-family:"Instrument Serif",Georgia,serif;font-size:24px;
   color:var(--ink-soft);letter-spacing:.06em;
   background-image:
     repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
@@ -859,7 +874,7 @@ footer .colophon{
 .campaign-asset.reel .reel-ph{
   display:flex;align-items:center;justify-content:center;
   text-align:center;padding:24px;
-  font-family:"Italiana",serif;font-size:22px;letter-spacing:.04em;
+  font-family:"Instrument Serif",Georgia,serif;font-size:22px;letter-spacing:.04em;
   color:var(--ink-soft);
   background-image:
     repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
@@ -874,7 +889,7 @@ footer .colophon{
 .campaign-asset.carousel .carousel-ph{
   width:100%;padding:48px 28px;
   text-align:center;
-  font-family:"Italiana",serif;font-size:22px;letter-spacing:.04em;
+  font-family:"Instrument Serif",Georgia,serif;font-size:22px;letter-spacing:.04em;
   color:var(--ink-soft);
   background-image:
     repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.04) 22px 23px);
@@ -888,8 +903,8 @@ footer .colophon{
   min-width:0 !important;
 }
 .campaign-meta .label{
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";
   font-weight:500;
   font-size:12px;letter-spacing:.32em;
@@ -898,7 +913,7 @@ footer .colophon{
   display:block;
 }
 .campaign-meta h3{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(32px,4.2vw,48px);line-height:1.04;
   margin:0 0 18px;
 }
@@ -916,14 +931,14 @@ footer .colophon{
   border-top:1px solid var(--rule);
 }
 .campaign-numbers .num{
-  font-family:"Italiana",serif;
+  font-family:"Instrument Serif",Georgia,serif;
   font-size:36px;color:var(--ink);
   line-height:1;
 }
 .campaign-numbers .num .l{
   display:block;
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";
   font-weight:500;
   font-size:11px;letter-spacing:.22em;
@@ -1008,8 +1023,8 @@ footer .colophon{
   padding:9px 18px;
   border:1px solid var(--rule);border-radius:999px;
   background:var(--paper);color:var(--ink-mid);
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";
   font-weight:500;font-size:13px;letter-spacing:.2em;
   transition:border-color .2s,color .2s,background .2s;
@@ -1025,12 +1040,12 @@ footer .colophon{
   gap:72px;margin-top:56px;align-items:start;
 }
 .about-lead{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(28px,3.4vw,42px);line-height:1.12;
   margin:0 0 28px;color:var(--ink);
 }
 .about-lead em{
-  font-family:"EB Garamond",serif;font-style:italic;
+  font-family:"Inter",system-ui,sans-serif;font-style:italic;
   color:var(--red-deep);font-weight:400;
 }
 .about p{
@@ -1041,8 +1056,8 @@ footer .colophon{
 }
 .about p em{font-style:italic;color:var(--red-deep)}
 .about .kicker{
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;font-feature-settings:"c2sc","smcp";
   font-weight:500;font-size:12px;letter-spacing:.32em;
   color:var(--red-deep);margin:0 0 14px;display:block;
 }
@@ -1070,7 +1085,7 @@ footer .colophon{
   margin-top:8px;max-width:980px;
 }
 .chip-field .chip{
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-size:clamp(18px,2vw,26px);line-height:1;
   color:var(--paper);
   padding:12px 22px;
@@ -1098,13 +1113,13 @@ footer .colophon{
   background:var(--panel);
   border:1px solid var(--rule);border-radius:999px;
   padding:13px 24px;
-  font-family:"EB Garamond",serif;
+  font-family:"Inter",system-ui,sans-serif;
   font-size:clamp(18px,1.9vw,24px);line-height:1;
   color:var(--ink);
   transition:transform .2s ease,border-color .2s,color .2s,background .2s;
 }
 .link-chips a .n{
-  font-family:"Italiana",serif;font-size:13px;letter-spacing:.06em;
+  font-family:"Instrument Serif",Georgia,serif;font-size:13px;letter-spacing:.06em;
   color:var(--red);position:relative;top:-2px;
 }
 .link-chips a:hover{
@@ -1126,7 +1141,7 @@ footer .colophon{
   gap:72px;align-items:end;margin-top:8px;
 }
 .lets-copy p{
-  font-family:"EB Garamond",serif;font-style:italic;
+  font-family:"Inter",system-ui,sans-serif;font-style:italic;
   font-size:clamp(22px,2.6vw,32px);line-height:1.4;
   color:var(--paper);margin:0 0 22px;max-width:640px;
 }
@@ -1142,7 +1157,7 @@ footer .colophon{
   border-radius:4px;padding:34px 32px;
 }
 .lets-card .big{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(40px,5vw,64px);line-height:.96;
   color:var(--paper);margin:0 0 26px;
 }
@@ -1153,8 +1168,8 @@ footer .colophon{
 }
 .lets-list li:last-child{border-bottom:none}
 .lets-list .k{
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
+  font-family:"Inter",system-ui,sans-serif;
+  text-transform:uppercase;font-feature-settings:"c2sc","smcp";
   font-weight:500;font-size:12px;letter-spacing:.24em;
   color:rgba(242,237,227,.7);
 }
@@ -1208,28 +1223,28 @@ a.gallery-tile:hover{color:var(--ink)}
   background-image:repeating-linear-gradient(135deg,transparent 0 22px,rgba(58,42,26,.045) 22px 23px);
 }
 .gallery-tile .shot .ph .mono{
-  font-family:"Italiana",serif;font-size:44px;line-height:1;color:var(--ink-soft);
+  font-family:"Instrument Serif",Georgia,serif;font-size:44px;line-height:1;color:var(--ink-soft);
 }
 .gallery-tile .shot .ph small{
-  font-family:"EB Garamond",serif;font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";font-weight:500;
   font-size:12px;letter-spacing:.24em;color:var(--ink-soft);
 }
 .gallery-tile .body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
 .gallery-tile .cat{
-  font-family:"EB Garamond",serif;font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";font-weight:500;
   font-size:12px;letter-spacing:.28em;color:var(--red-deep);
 }
 .gallery-tile h3{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:30px;line-height:1.04;margin:0;color:var(--ink);
 }
 .gallery-tile p{font-size:17px;line-height:1.5;color:var(--ink-mid);margin:0;flex:1}
 .gallery-tile .open{
   margin-top:6px;align-self:flex-start;
   display:inline-flex;align-items:center;gap:12px;
-  font-family:"EB Garamond",serif;font-variant:all-small-caps;
+  font-family:"Inter",system-ui,sans-serif;text-transform:uppercase;
   font-feature-settings:"c2sc","smcp";font-weight:500;
   font-size:13px;letter-spacing:.22em;color:var(--red-deep);
   border-bottom:none;
@@ -1240,10 +1255,10 @@ a.gallery-tile:hover{color:var(--ink)}
 .page-head{padding:52px 0 0}
 .page-head .label{display:block;margin-bottom:12px}
 .page-head h1{
-  font-family:"Italiana",serif;font-weight:400;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
   font-size:clamp(40px,6vw,76px);line-height:1;margin:0;color:var(--ink);
 }
-.page-head h1 em{font-family:"EB Garamond",serif;font-style:italic;color:var(--red-deep);font-weight:400}
+.page-head h1 em{font-family:"Inter",system-ui,sans-serif;font-style:italic;color:var(--red-deep);font-weight:400}
 .page-head .sub{margin:14px 0 0;color:var(--ink-soft);font-size:17px}
 .page-section{padding:34px 0 88px}
 /* 4-up metric row (achievement highlights) */
@@ -1256,87 +1271,55 @@ a.gallery-tile:hover{color:var(--ink)}
    type; portrait composed on the face. Replaces the cream editorial hero.
    ═══════════════════════════════════════════════════════════════ */
 .cover{
-  background:
-    radial-gradient(at 88% 6%, rgba(255,255,255,.07), transparent 50%),
-    radial-gradient(at 4% 96%, rgba(0,0,0,.22), transparent 55%),
-    var(--red-bleed);
-  color:var(--paper);
+  background:var(--paper);
+  color:var(--ink);
   border-top:none;
   padding:0;
 }
-.cover .wrap{padding-top:76px;padding-bottom:84px}
+.cover .wrap{padding-top:54px;padding-bottom:84px}
 .cover-grid{
-  display:grid;grid-template-columns:1.15fr .85fr;
-  gap:72px;align-items:center;
+  display:grid;grid-template-columns:1.18fr .82fr;
+  gap:60px;align-items:center;
 }
-.cover-eyebrow{
-  display:flex;align-items:center;gap:18px;
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
-  font-weight:500;font-size:15px;letter-spacing:.3em;
-  color:#F4D9A8;margin-bottom:34px;
+.cover-kicker{
+  font-family:var(--font-label);text-transform:uppercase;
+  font-weight:500;font-size:12px;letter-spacing:.16em;
+  color:var(--ink-soft);margin:0 0 26px;display:block;
 }
-.cover-eyebrow .line{flex:1;height:1px;background:rgba(244,217,168,.4);max-width:120px}
-.cover h1{
-  font-family:"Italiana",serif;font-weight:400;
-  font-size:clamp(72px,11vw,150px);line-height:.9;
-  letter-spacing:.005em;margin:0;color:var(--paper);
+.cover-head{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(40px,5.5vw,80px);line-height:1.02;
+  letter-spacing:-0.01em;margin:0;color:var(--ink);
 }
-.cover .surname{
-  font-family:"EB Garamond",serif;font-style:italic;font-weight:400;
-  font-size:clamp(40px,6vw,84px);line-height:1;
-  margin:4px 0 0;color:#F4D9A8;
+.cover-head em{font-family:var(--font-display);font-style:italic}
+.cover-sub{
+  font-family:var(--font-body);
+  font-size:clamp(15px,1.35vw,18px);line-height:1.6;
+  color:var(--ink-mid);max-width:470px;margin:28px 0 0;
 }
-.cover .role{
-  margin:30px 0 0;
-  font-size:clamp(20px,2.2vw,26px);line-height:1.45;
-  color:var(--paper);max-width:520px;
-}
-.cover .role em{font-style:italic;color:#F4D9A8}
-.cover-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.cover-cta-row{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin-top:34px}
+.cover-links{display:flex;gap:22px;flex-wrap:wrap}
 .cover-links a{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:11px 22px;border-radius:999px;
-  border:1px solid rgba(242,237,227,.4);
-  background:rgba(242,237,227,.06);
-  color:var(--paper);
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
-  font-weight:500;font-size:15px;letter-spacing:.18em;
-  transition:background .2s,border-color .2s,color .2s;
+  font-family:var(--font-label);text-transform:uppercase;
+  font-weight:500;font-size:12px;letter-spacing:.12em;
+  color:var(--ink-mid);border:none;
 }
-.cover-links a:hover{background:var(--paper);color:var(--red-deep);border-color:var(--paper)}
-.cover-links a.solid{background:var(--paper);color:var(--red-deep);border-color:var(--paper)}
-.cover-links a.solid:hover{background:#F4D9A8;border-color:#F4D9A8}
-.cover-meta{
-  margin-top:36px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;
-  font-family:"EB Garamond",serif;
-  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
-  font-weight:500;font-size:15px;letter-spacing:.16em;
-  color:rgba(242,237,227,.9);
-}
-.cover-meta .pip{width:5px;height:5px;border-radius:50%;background:#F4D9A8;display:inline-block}
+.cover-links a:hover{color:var(--red-deep)}
 
 .cover-portrait{
   position:relative;width:100%;max-width:380px;justify-self:end;
   aspect-ratio:4/5;
 }
-.cover-portrait::before{
-  content:"";position:absolute;inset:16px -16px -16px 16px;
-  border:1px solid rgba(244,217,168,.55);border-radius:4px;z-index:0;
-}
 .cover-portrait .frame{
-  position:relative;z-index:1;width:100%;height:100%;
-  border-radius:4px;overflow:hidden;
-  background:rgba(0,0,0,.12);
-  box-shadow:0 30px 60px -30px rgba(0,0,0,.5);
+  width:100%;height:100%;border-radius:3px;overflow:hidden;
+  background:var(--panel-deep);border:1px solid var(--rule);
 }
 .cover-portrait .frame img{
   width:100%;height:100%;object-fit:cover;object-position:50% 72%;
 }
 .cover-portrait .frame .ph{
   width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  font-family:"Italiana",serif;font-size:64px;color:rgba(242,237,227,.6);
+  font-family:var(--font-display);font-size:64px;color:var(--ink-soft);
 }
 
 @media (max-width:980px){
@@ -1361,7 +1344,7 @@ a.gallery-tile:hover{color:var(--ink)}
 .brand-chip.glyph{padding:0 22px;min-width:66px}
 .brand-chip.glyph img{height:34px;width:auto;object-fit:contain}
 .brand-chip .wordmark{
-  font-family:"EB Garamond",serif;font-weight:600;
+  font-family:"Inter",system-ui,sans-serif;font-weight:600;
   font-size:21px;letter-spacing:.01em;line-height:1;
   color:currentColor;white-space:nowrap;
 }
