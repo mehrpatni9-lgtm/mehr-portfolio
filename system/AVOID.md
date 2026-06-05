@@ -5,6 +5,24 @@ Read this **before** writing copy or code. Append, don't replace.
 
 ---
 
+## ★ KEY RULES (non-negotiable, added 2026-06-05 reset)
+
+1. **No illegible text — anywhere, ever.** Every character (body, label, caption,
+   text on a colour band, SVG label) must be comfortably readable: body ≥16px
+   effective on screen, labels ≥14px, and always high-contrast (no light text on
+   light, no near-tone text, no tracking so wide a word stops reading as a word).
+   This generalises the old SVG-label rule to *all* text. Reviewer fails on any
+   text that is small, low-contrast, or hard to read at any viewport.
+2. **One focused page, no content overload.** The cover is a tight, confident
+   single page — not a dump of every section. If a section isn't earning its
+   place, it goes to a dedicated page later. Restraint over completeness.
+3. **It must look like *Mehr's* — her deck, her voice, her red.** Bold, editorial,
+   personal. Not a generic template. When in doubt, return to the PDF deck.
+4. **The portrait must be well-composed** — her face properly centred in its
+   frame at every viewport. Never crop the face awkwardly.
+
+---
+
 ## Voice & copy
 
 - **"X not Y" contrast sentence pattern.** ("…not a campaign that peaked.") Feels like LinkedIn-bro contrast copy.

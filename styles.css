@@ -1163,6 +1163,101 @@ footer .colophon{
 .lets-list .v a{color:var(--paper);border-bottom-color:rgba(242,237,227,.4)}
 .lets-list .v a:hover{border-bottom-color:var(--paper);color:#F4D9A8}
 
+/* ═══════════════════════════════════════════════════════════════
+   COVER HERO — 2026-06-05 reset. One bold, legible, on-deck page.
+   Full-bleed red opening (echoes the deck cover); high contrast cream
+   type; portrait composed on the face. Replaces the cream editorial hero.
+   ═══════════════════════════════════════════════════════════════ */
+.cover{
+  background:
+    radial-gradient(at 88% 6%, rgba(255,255,255,.07), transparent 50%),
+    radial-gradient(at 4% 96%, rgba(0,0,0,.22), transparent 55%),
+    var(--red-bleed);
+  color:var(--paper);
+  border-top:none;
+  padding:0;
+}
+.cover .wrap{padding-top:76px;padding-bottom:84px}
+.cover-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:72px;align-items:center;
+}
+.cover-eyebrow{
+  display:flex;align-items:center;gap:18px;
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
+  font-weight:500;font-size:15px;letter-spacing:.3em;
+  color:#F4D9A8;margin-bottom:34px;
+}
+.cover-eyebrow .line{flex:1;height:1px;background:rgba(244,217,168,.4);max-width:120px}
+.cover h1{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:clamp(72px,11vw,150px);line-height:.9;
+  letter-spacing:.005em;margin:0;color:var(--paper);
+}
+.cover .surname{
+  font-family:"EB Garamond",serif;font-style:italic;font-weight:400;
+  font-size:clamp(40px,6vw,84px);line-height:1;
+  margin:4px 0 0;color:#F4D9A8;
+}
+.cover .role{
+  margin:30px 0 0;
+  font-size:clamp(20px,2.2vw,26px);line-height:1.45;
+  color:var(--paper);max-width:520px;
+}
+.cover .role em{font-style:italic;color:#F4D9A8}
+.cover-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.cover-links a{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:11px 22px;border-radius:999px;
+  border:1px solid rgba(242,237,227,.4);
+  background:rgba(242,237,227,.06);
+  color:var(--paper);
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
+  font-weight:500;font-size:15px;letter-spacing:.18em;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.cover-links a:hover{background:var(--paper);color:var(--red-deep);border-color:var(--paper)}
+.cover-links a.solid{background:var(--paper);color:var(--red-deep);border-color:var(--paper)}
+.cover-links a.solid:hover{background:#F4D9A8;border-color:#F4D9A8}
+.cover-meta{
+  margin-top:36px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;
+  font-family:"EB Garamond",serif;
+  font-variant:all-small-caps;font-feature-settings:"c2sc","smcp";
+  font-weight:500;font-size:15px;letter-spacing:.16em;
+  color:rgba(242,237,227,.9);
+}
+.cover-meta .pip{width:5px;height:5px;border-radius:50%;background:#F4D9A8;display:inline-block}
+
+.cover-portrait{
+  position:relative;width:100%;max-width:380px;justify-self:end;
+  aspect-ratio:4/5;
+}
+.cover-portrait::before{
+  content:"";position:absolute;inset:16px -16px -16px 16px;
+  border:1px solid rgba(244,217,168,.55);border-radius:4px;z-index:0;
+}
+.cover-portrait .frame{
+  position:relative;z-index:1;width:100%;height:100%;
+  border-radius:4px;overflow:hidden;
+  background:rgba(0,0,0,.12);
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.5);
+}
+.cover-portrait .frame img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 72%;
+}
+.cover-portrait .frame .ph{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-family:"Italiana",serif;font-size:64px;color:rgba(242,237,227,.6);
+}
+
+@media (max-width:980px){
+  .cover-grid{grid-template-columns:1fr;gap:44px}
+  .cover-portrait{justify-self:start;max-width:300px}
+  .cover .wrap{padding-top:52px;padding-bottom:60px}
+}
+
 /* ── Logo-wall marquee tiles (real logos, mixed sources unified) ── */
 .marquee-track{gap:22px}
 .brand-chip{

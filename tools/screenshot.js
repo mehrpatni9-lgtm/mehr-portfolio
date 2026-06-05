@@ -27,7 +27,7 @@ const viewports = [
 
 // Sections to spot-shot. Selectors must exist in index.html.
 const sections = [
-  { slug: 'hero',      selector: 'header.hero' },
+  { slug: 'hero',      selector: 'header.cover' },
   { slug: 'about',     selector: '#about' },
   { slug: 'expertise', selector: '#expertise' },
   { slug: 'marquee',   selector: '.marquee-wrap' },
