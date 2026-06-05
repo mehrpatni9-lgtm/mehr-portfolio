@@ -88,6 +88,23 @@ the same thing on the page and in the download.
 
 ---
 
+## Asset handling (the rule)
+
+Drive links are private — a recruiter would hit "access denied." So we **host
+the real asset on the site** wherever we can. By project shape:
+
+| Project shape | Destination of the tile's link |
+|---|---|
+| One finished doc (PDF / e-book / brochure / magazine) | Extract the PDF from Drive → host under `assets/<chapter>/<slug>/` → open it inline |
+| One big video (>~30MB) | Keep the cover frame as the tile; link its **public** YouTube/Instagram URL (don't host) |
+| Two-or-more pieces | A dedicated `projects/<slug>.html` page with its own gallery; host/link each piece |
+
+Pull files from Drive with `curl -sL "https://drive.google.com/uc?export=download&id=<ID>"`
+and thumbnails with `https://drive.google.com/thumbnail?id=<ID>&sz=w1200`.
+Keep the repo lean: host finished documents; for sprawling working folders, host the
+best few and link the public Drive/social URL for the rest. Never invent copy for an
+asset — title + medium tag + link only, until Mehr sends her own words.
+
 ## Common commands
 
 ```bash
