@@ -7,7 +7,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
 
-const ROOT = __dirname;
+const ROOT = path.resolve(__dirname, '..');
 const SLUGS = ['magna','stratos','ivory','wahed','ipg','passion-projects'];
 const OUT = path.join(ROOT, 'case-studies');
 fs.mkdirSync(OUT, { recursive: true });

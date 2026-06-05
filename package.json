@@ -5,16 +5,16 @@
   "description": "Mehr Patni — spec-driven editorial portfolio with agent-reviewed iteration loop.",
   "main": "index.html",
   "scripts": {
-    "review": "node screenshot.js",
-    "review:live": "node screenshot.js --live",
-    "review:inventory": "node screenshot.js --section=inventory",
-    "pdf": "node pdf.js",
-    "pdf:magna": "node pdf.js --slug=magna",
-    "pdf:stratos": "node pdf.js --slug=stratos",
-    "pdf:ivory": "node pdf.js --slug=ivory",
-    "pdf:wahed": "node pdf.js --slug=wahed",
-    "pdf:ipg": "node pdf.js --slug=ipg",
-    "pdf:passion-projects": "node pdf.js --slug=passion-projects"
+    "review": "node tools/screenshot.js",
+    "review:live": "node tools/screenshot.js --live",
+    "review:inventory": "node tools/screenshot.js --section=inventory",
+    "pdf": "node tools/pdf.js",
+    "pdf:magna": "node tools/pdf.js --slug=magna",
+    "pdf:stratos": "node tools/pdf.js --slug=stratos",
+    "pdf:ivory": "node tools/pdf.js --slug=ivory",
+    "pdf:wahed": "node tools/pdf.js --slug=wahed",
+    "pdf:ipg": "node tools/pdf.js --slug=ipg",
+    "pdf:passion-projects": "node tools/pdf.js --slug=passion-projects"
   },
   "license": "ISC",
   "devDependencies": {

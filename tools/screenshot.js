@@ -8,7 +8,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
 
-const ROOT = __dirname;
+const ROOT = path.resolve(__dirname, '..');
 const REPO_FILE_URL = `file://${path.join(ROOT, 'index.html')}`;
 const LIVE_URL = 'https://mehrpatni9-lgtm.github.io/mehr-portfolio/';
 
@@ -27,14 +27,13 @@ const viewports = [
 
 // Sections to spot-shot. Selectors must exist in index.html.
 const sections = [
-  { slug: 'hero',       selector: 'header.hero' },
-  { slug: 'marquee',    selector: '.marquee-wrap' },
-  { slug: 'sell',       selector: '.framework:nth-of-type(1) .fw-diagram' },
-  { slug: 'ruleoffive', selector: '.framework:nth-of-type(2) .fw-diagram' },
-  { slug: 'inventory',  selector: '.framework:nth-of-type(3) .fw-diagram' },
-  { slug: 'cases',      selector: '#cases' },
-  { slug: 'work',       selector: '#work' },
-  { slug: 'contact',    selector: '#contact' },
+  { slug: 'hero',      selector: 'header.hero' },
+  { slug: 'about',     selector: '#about' },
+  { slug: 'expertise', selector: '#expertise' },
+  { slug: 'marquee',   selector: '.marquee-wrap' },
+  { slug: 'work',      selector: '#work' },
+  { slug: 'projects',  selector: '#projects' },
+  { slug: 'contact',   selector: '#contact' },
 ];
 
 const outDir = path.join(ROOT, '.review', 'latest');
@@ -72,8 +71,8 @@ fs.mkdirSync(outDir, { recursive: true });
 
   await browser.close();
   console.log(`\nDone. Screenshots in ${path.relative(ROOT, outDir)}/`);
-  if (fs.existsSync(path.join(ROOT, 'reference'))) {
-    const refs = fs.readdirSync(path.join(ROOT, 'reference')).filter(f => f.endsWith('.png'));
+  if (fs.existsSync(path.join(ROOT, 'system', 'reference'))) {
+    const refs = fs.readdirSync(path.join(ROOT, 'system', 'reference')).filter(f => f.endsWith('.png'));
     if (refs.length) {
       console.log(`\nReference images available for comparison:`);
       refs.forEach(r => console.log(`  reference/${r}`));
