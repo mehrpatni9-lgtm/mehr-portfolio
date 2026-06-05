@@ -25,6 +25,14 @@ Read this **before** writing copy or code. Append, don't replace.
    en dash (e.g. `2022–2023`); a title separator uses a middot (`·`). Reviewer
    greps every `.html`/`.css` for `—` and fails on any hit. (The em dash reads as a
    tic / AI tell; Mehr asked it gone everywhere.)
+6. **TYPE + BASE RESET (2026-06-05). The old "all-serif, no sans-serif" rule is
+   REVERSED.** Current system: **Instrument Serif** = headings/display/numbers
+   (`--font-display`); **Switzer** (self-hosted `fonts/switzer/`, free Neue Montreal
+   stand-in) = uppercase labels / section headings (`--font-label`); **Inter** =
+   body (`--font-body`). Base is warm off-white `--paper:#F4F2EC`, ink `#1A1714`,
+   red kept as accent. Voice/positioning: consultant-meets-creative-director —
+   intelligent, strategic, timeless, NOT a typical agency site. Italiana is retired
+   (too thin/illegible on the warm base, esp. numbers + caps).
 
 ---
 
