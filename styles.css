@@ -1178,11 +1178,17 @@ footer .colophon{
   border:1px solid var(--rule);border-radius:6px;overflow:hidden;
   transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
 }
+/* Whole tile is the link */
+a.gallery-tile{text-decoration:none;color:var(--ink);cursor:pointer}
+a.gallery-tile:hover{color:var(--ink)}
 .gallery-tile:hover{
   transform:translateY(-3px);
   box-shadow:0 18px 42px -26px rgba(42,24,16,.42);
   border-color:var(--red);
 }
+.gallery-tile:hover h3{color:var(--red-deep)}
+.gallery-tile:hover .open{color:var(--red)}
+.gallery-tile:hover .open .arr{width:32px}
 .gallery-tile .shot{
   aspect-ratio:4/3;
   background:
@@ -1230,8 +1236,17 @@ footer .colophon{
   border-bottom:none;
 }
 .gallery-tile .open .arr{width:22px;height:1px;background:var(--red);display:inline-block;transition:width .2s}
-.gallery-tile .open:hover{color:var(--red)}
-.gallery-tile .open:hover .arr{width:32px}
+
+/* Compact header for inner project pages — no big "spotlight" hero, minimal scroll */
+.page-head{padding:52px 0 0}
+.page-head .label{display:block;margin-bottom:12px}
+.page-head h1{
+  font-family:"Italiana",serif;font-weight:400;
+  font-size:clamp(40px,6vw,76px);line-height:1;margin:0;color:var(--ink);
+}
+.page-head h1 em{font-family:"EB Garamond",serif;font-style:italic;color:var(--red-deep);font-weight:400}
+.page-head .sub{margin:14px 0 0;color:var(--ink-soft);font-size:17px}
+.page-section{padding:34px 0 88px}
 
 /* ═══════════════════════════════════════════════════════════════
    COVER HERO — 2026-06-05 reset. One bold, legible, on-deck page.
